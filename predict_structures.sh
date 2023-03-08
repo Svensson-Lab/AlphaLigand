@@ -18,14 +18,15 @@ uniclust30_database_path="$data_dir/uniclust30/uniclust30_2018_08/uniclust30_201
 uniref90_database_path="$data_dir/uniref90/uniref90.fasta"
 uniprot_database_path="$data_dir/uniprot/uniprot.fasta"
 
+## Stop editing here
+
 ##Dummy database
-dummy_dir="/home/users/dkavi/dummy_database"
+dummy_dir="dummy_database/"
 template_mmcif_dir="$dummy_dir/"
 obsolete_pdbs_path="$dummy_dir/dummy_obsolete.dat"
 pdb70_database_path="$dummy_dir/dummydb"
 pdb_seqres_database_path="$dummy_dir/dummy_fas.fas"
 
-## Stop editing here
 
 paths="$bfd_database_path;$small_bfd_database_path;$mgnify_database_path;$template_mmcif_dir;$obsolete_pdbs_path;$pdb70_database_path;$pdb_seqres_database_path;$uniclust30_database_path;$uniref90_database_path;$uniprot_database_path"
 
