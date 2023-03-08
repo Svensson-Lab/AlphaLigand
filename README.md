@@ -26,6 +26,7 @@ logdir=$out_dir #directory to write logs to, same as outdir by default
 If you wish to only (pre)compute MSAs for a given directory of fasta sequences, you can run the `compute_msa_parallel` script.  
 
 ### Predictions
+If you wish to do predictions AND MSAs, you can run the `run_predictions` script. If you have precomputed MSAs in the out directory you can set the `TODO` flag to true.
 
 ### Tips and Possible Issues
 1. If the number of sequences you are processing is high, there is a possibly that your HPC environment will not allow you to submit the whole library. To alleviate this, you can modify the `num_files` and `i` variables in the bash scripts to a more managable number. For example `i=0` and `num_files=800` will process the first 800 sequences and i=800 and num_files=1600 will process the next 800.
