@@ -23,7 +23,7 @@ logdir=$out_dir #directory to write logs to, same as outdir by default
 
 
 ### Compute MSAs 
-If you wish to only (pre)compute MSAs for a given directory of fasta sequences, you can run the `compute_msa_parallel` script. [Link](https://drive.google.com/file/d/1CzcO4JfKO8NrnVQvIKIQTCn__ha1ZWly/view?usp=share_link)
+If you wish to only (pre)compute MSAs for a given directory of fasta sequences, you can run the `compute_msa_parallel` script. [Link to precomputed MSAs](https://drive.google.com/file/d/1CzcO4JfKO8NrnVQvIKIQTCn__ha1ZWly/view?usp=share_link)
 
 ### Predictions
 If you wish to do predictions AND MSAs, you can run the `run_predictions` script. If you have precomputed MSAs in the out directory you can set the `TODO` flag to true.
