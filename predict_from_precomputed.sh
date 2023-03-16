@@ -2,7 +2,7 @@
 #SBATCH --job-name=structure-prediction
 #SBATCH --time=16:00:00
 #SBATCH --nodes=2
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=8
 #SBATCH --mem=64GB
 
 input=$1 #Fasta file path: $1
@@ -32,6 +32,6 @@ echo "Started Prediction:"$(date +"%Y-%m-%d %T") > $log
 #	-c reduced_dbs \
 #	-use_gpu_relax=false
 
-bash $run_parafold_path -d $dbpath -b $paths -o $output -p false -m multimer -f $input -t 1800-01-01 -c full_dbs -e false -g false
+bash $run_parafold_path -d $dbpath -b $paths -o $output -p false -m multimer -f $input -t 1800-01-01 -c reduced_dbs -e false -g false
 
 echo "Finished Prediction:"$(date +"%Y-%m-%d %T") >> $log
