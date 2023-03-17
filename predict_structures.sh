@@ -1,12 +1,15 @@
 #!/bin/bash
 ## Edit below with your requirements
 fasta_path="inputs" #path to receptor fasta files 
-run_parafold_path="run_parafold_no_template.sh" #path to run_parafold_no_template.sh script
+run_parafold_path="run_alphafold_test.sh" #path to run_alphafold.sh script
 
 out_dir="/home/groups/katrinjs/predictions" #directory to write to
 data_dir="$OAK/alphafold_data" #directory to alphafold database folder, (make sure not to have "/" at the end)  
 logdir=$out_dir #directory to write logs to, same as outdir by default
 
+## Stop editing here
+
+##database paths
 bfd_database_path="$data_dir/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt"
 small_bfd_database_path="$data_dir/small_bfd/bfd-first_non_consensus_sequences.fasta"
 mgnify_database_path="$data_dir/mgnify/mgy_clusters_2018_12.fa"
@@ -17,8 +20,6 @@ mgnify_database_path="$data_dir/mgnify/mgy_clusters_2018_12.fa"
 uniclust30_database_path="$data_dir/uniclust30/uniclust30_2018_08/uniclust30_2018_08"   # We recommend this use the 2020 version of uniclust
 uniref90_database_path="$data_dir/uniref90/uniref90.fasta"
 uniprot_database_path="$data_dir/uniprot/uniprot.fasta"
-
-## Stop editing here
 
 ##Dummy database
 dummy_dir="dummy_database/"
@@ -41,12 +42,6 @@ cd $working
 #fix batch related error 
 sed -i -e 's/\r$//' predict_from_precomputed.sh
 sed -i -e 's/\r$//' run_alphafold_test.sh
-
-#first 800 done #num_files=800
-#num_files=1600
-
-num_files=800
-run_parafold_path="run_alphafold_test.sh"
 
 #submit indiviual jobs per each sequence
 for (( i=0; i<${num_files}; i++ ));
