@@ -1,7 +1,7 @@
 This collection of scripts predicts the structures of a list of fasta files in a directory using [Slurm](https://slurm.schedmd.com/documentation.html).
 
 ## Installation
-
+Follow "Setup and installation" for alphafold_non_docker by kalininalab [here](https://github.com/kalininalab/alphafold_non_docker).
 ## Usage
 
 ### Inputs
