@@ -5,7 +5,7 @@ Follow "Setup and installation" for alphafold_non_docker by kalininalab [here](h
 ## Usage
 
 ### Inputs
-For both MSA computations and structure predictions, we use the same inputs:
+To provide your paths to each script please edit the necessary parts of either the `predict_structures` or the `compute_msa_parallel` files. For both MSA computations and structure predictions, we use the same inputs: (these inputs are the only parts of the script you will need to edit)
 ```
 fasta_path="inputs" #path to receptor fasta files 
 run_parafold_path="run_parafold_no_template.sh" #path to run_parafold_no_template.sh script
