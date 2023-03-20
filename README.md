@@ -1,4 +1,4 @@
-This collection of scripts predicts the structures of a list of fasta files in a directory using [Slurm](https://slurm.schedmd.com/documentation.html).
+The collection of scripts in this repository predicts the structures of protein-multimers using lists of fasta files in a directory using [Slurm](https://slurm.schedmd.com/documentation.html).
 
 ## Installation
 Follow "Setup and installation" for alphafold_non_docker by kalininalab [here](https://github.com/kalininalab/alphafold_non_docker).
@@ -20,13 +20,11 @@ logdir=$out_dir #directory to write logs to, same as outdir by default
 1. `data_dir` is the directory to alphafold database folder, (make sure not to have a "/" at the end)
 1. `logdir` is directory to write logs to, same as outdir by default
 
-
-
 ### Compute MSAs 
-If you wish to only (pre)compute MSAs for a given directory of fasta sequences, you can run the `compute_msa_parallel` script. [Link to precomputed MSAs](https://drive.google.com/file/d/1CzcO4JfKO8NrnVQvIKIQTCn__ha1ZWly/view?usp=share_link)
+If you wish to only (pre)compute MSAs for a given directory of fasta sequences, run the `compute_msa_parallel` script. [Link to precomputed MSAs](https://drive.google.com/file/d/1CzcO4JfKO8NrnVQvIKIQTCn__ha1ZWly/view?usp=share_link)
 
 ### Predictions
-If you wish to do predictions AND MSAs, you can run the `run_predictions` script. Precomputed MSAs are searched for in the out directory by default, you can download MSAs from the link above. If there are no MSAs in the out directory, the prediction script will compute them as necessary.
+If you wish to do predictions AND MSAs, you can run the `run_predictions` script. Precomputed MSAs located in the out directory is used by default, you can download MSAs for the library described in (https://www.biorxiv.org/content/10.1101/2023.03.16.531341v1) from the link above. If there are no MSAs in the out directory, the prediction script will compute them as necessary.
 
 ### Tips and Possible Issues
-1. If the number of sequences you are processing is high, there is a possibly that your HPC environment will not allow you to submit the whole library. To alleviate this, you can modify the `num_files` and `i` variables in the bash scripts to a more managable number. For example `i=0` and `num_files=800` will process the first 800 sequences and i=800 and num_files=1600 will process the next 800.
+1. If the number of sequences you are processing is high, there is a possibly that your HPC environment will not allow you to submit the whole library. To solve this you can modify the `num_files` and `i` variables in the bash scripts to run fewer simultaneous predictions. For example `i=0` and `num_files=800` will process the first 800 sequences and i=800 and num_files=1600 will process the next 800.
