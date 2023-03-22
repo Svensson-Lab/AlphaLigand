@@ -1,7 +1,7 @@
 The collection of scripts in this repository predicts the structures of protein-multimers using lists of fasta files in a directory using [Slurm](https://slurm.schedmd.com/documentation.html).
 
 ## Installation
-Follow "Setup and installation" for alphafold_non_docker by kalininalab [here](https://github.com/kalininalab/alphafold_non_docker).
+First clone this repository, then follow "Setup and installation" for alphafold_non_docker by kalininalab [here](https://github.com/kalininalab/alphafold_non_docker).
 ## Usage
 
 ### Inputs
