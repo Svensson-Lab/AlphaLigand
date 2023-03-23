@@ -45,7 +45,6 @@ sed -i -e 's/\r$//' run_alphafold_test.sh
 #submit indiviual jobs per each sequence
 for (( i=0; i<${num_files}; i++ ));
 do
-    #sbatch ./predict_from_precomputed.sh $fasta_path/${files[$i]} $out_dir $run_parafold_path $data_dir/ $i $paths &
     sbatch ./predict_from_precomputed.sh $fasta_path/${files[$i]} $out_dir $run_parafold_path $data_dir/ $i $paths &
 done
 
