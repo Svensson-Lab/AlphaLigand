@@ -7,7 +7,9 @@ The collection of scripts in this repository predicts the structures of protein-
 `git clone git@github.com:Svensson-Lab/run-hpc-alphafold.git` <br> 
 `cd run-hpc-alphafold`
 1. Install requirements <br> 
-`conda create --name alphafold-git --file req.txt`
+`conda create --name alphafold --file req.txt` 
+1. Activate environment: <br>
+conda activate alphafold
 ## Usage
 
 ### Inputs
