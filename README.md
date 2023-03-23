@@ -2,11 +2,12 @@ The collection of scripts in this repository predicts the structures of protein-
 
 ## Installation
 1. Install miniconda:
-`wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash Miniconda3-latest-Linux-x86_64.sh`
+`wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash Miniconda3-latest-Linux-x86_64.sh` <br> 
 1. Clone this repository: 
-`git@github.com:Svensson-Lab/run-hpc-alphafold.git`
+`git@github.com:Svensson-Lab/run-hpc-alphafold.git` <br> 
 `cd run-hpc-alphafold`
-1. `conda create --name alphafold-git --file req.txt`
+1. Install requirements <br> 
+`conda create --name alphafold-git --file req.txt`
 ## Usage
 
 ### Inputs
