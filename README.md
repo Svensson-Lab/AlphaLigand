@@ -10,6 +10,12 @@ The collection of scripts in this repository predicts the structures of protein-
 `conda create --name alphafold --file req.txt` 
 1. Activate environment: <br>
 `conda activate alphafold`
+1. Set permissions for shell files: <br>
+`chmod +x compute_msa.sh`
+`chmod +x compute_msa_parallel.sh`
+`chmod +x predict_structures.sh`
+`chmod +x predict_from_precomputed.sh`
+
 ## Usage
 
 ### Inputs

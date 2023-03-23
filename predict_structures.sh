@@ -1,7 +1,7 @@
 #!/bin/bash
 ## Edit below with your requirements
 fasta_path="/home/groups/katrinjs/inputs" #path to receptor fasta files 
-run_parafold_path="run_alphafold_test.sh" #path to run_alphafold.sh script
+run_parafold_path="run_parafold_no_template.sh" #path to run_alphafold.sh script
 
 out_dir="/home/groups/katrinjs/predictions" #directory to write to
 data_dir="$OAK/alphafold_data" #directory to alphafold database folder, (make sure not to have "/" at the end)  
