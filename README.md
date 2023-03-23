@@ -1,9 +1,9 @@
 The collection of scripts in this repository predicts the structures of protein-multimers using lists of fasta files in a directory using [Slurm](https://slurm.schedmd.com/documentation.html).
 
 ## Installation
-1. Install miniconda:
-`wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash Miniconda3-latest-Linux-x86_64.sh` <br> 
-1. Clone this repository: 
+1. Install miniconda:<br> 
+`wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash Miniconda3-latest-Linux-x86_64.sh` 
+1. Clone this repository: <br> 
 `git@github.com:Svensson-Lab/run-hpc-alphafold.git` <br> 
 `cd run-hpc-alphafold`
 1. Install requirements <br> 
