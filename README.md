@@ -9,7 +9,7 @@ The collection of scripts in this repository predicts the structures of protein-
 1. Install requirements <br> 
 `conda create --name alphafold --file req.txt` 
 1. Activate environment: <br>
-conda activate alphafold
+`conda activate alphafold`
 ## Usage
 
 ### Inputs
