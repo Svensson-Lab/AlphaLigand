@@ -8,6 +8,14 @@ The collection of scripts in this repository predicts the structures of protein-
 `cd run-hpc-alphafold`
 1. Install requirements <br> 
 `conda create --name alphafold --file req.txt` 
+
+- Change `jaxlib==0.3.25+cuda11.cudnn805` version if this is not supported in your system
+``` 
+pip install absl-py==1.0.0 biopython==1.79 chex==0.0.7 dm-haiku==0.0.9 dm-tree==0.1.6 immutabledict==2.0.0 jax==0.3.25 ml-collections==0.1.0 numpy==1.21.6 pandas==1.3.4 protobuf==3.20.1 scipy==1.7.0 tensorflow-cpu==2.9.0
+
+pip install --upgrade --no-cache-dir jax==0.3.25 jaxlib==0.3.25+cuda11.cudnn805 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+```
+
 1. Activate environment: <br>
 `conda activate alphafold`
 1. Set permissions for shell files: <br>
