@@ -3,7 +3,7 @@
 
 fasta_path="/home/groups/katrinjs/inputs/" #path to receptor fasta files 
 run_parafold_path="run_parafold_no_template.sh" #path to run_parafold_no_template.sh script
-out_dir="/home/groups/katrinjs/msas" #directory to write msas to
+out_dir="/home/groups/katrinjs/new_outs" #directory to write msas to
 data_dir="$OAK/alphafold_data" #directory to alphafold database folder, (make sure not to have "/" at the end)  
 logdir=$out_dir #directory to write logs to, same as outdir by default
 

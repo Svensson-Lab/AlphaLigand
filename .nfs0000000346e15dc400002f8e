@@ -1,0 +1,4 @@
+
+/oak/stanford/groups/katrinjs/alphafold_data/
+FATAL Flags parsing error: flag --model_preset=false: value should be one of <monomer|monomer_casp14|monomer_ptm|multimer>
+Pass --helpshort or --helpfull to see help on flags.

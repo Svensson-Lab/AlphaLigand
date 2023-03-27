@@ -1,0 +1,189 @@
+/home/groups/katrinjs/inputs//fasta_sequences/CDNF_ABHD2.fasta
+/oak/stanford/groups/katrinjs/alphafold_data/
+I0326 23:58:33.214586 140258407536448 templates.py:857] Using precomputed obsolete pdbs dummy_database//dummy_obsolete.dat.
+I0326 23:58:36.104201 140258407536448 xla_bridge.py:170] Remote TPU is not linked into jax; skipping remote TPU.
+I0326 23:58:36.104374 140258407536448 xla_bridge.py:355] Unable to initialize backend 'tpu_driver': Could not initialize backend 'tpu_driver'
+I0326 23:58:36.104480 140258407536448 xla_bridge.py:355] Unable to initialize backend 'cuda': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+I0326 23:58:36.104553 140258407536448 xla_bridge.py:355] Unable to initialize backend 'rocm': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+I0326 23:58:36.104833 140258407536448 xla_bridge.py:355] Unable to initialize backend 'tpu': module 'jaxlib.xla_extension' has no attribute 'get_tpu_client'
+I0326 23:58:36.104930 140258407536448 xla_bridge.py:355] Unable to initialize backend 'plugin': xla_extension has no attributes named get_plugin_device_client. Compile TensorFlow with //tensorflow/compiler/xla/python:enable_plugin_device set to true (defaults to false) to enable this.
+W0326 23:58:36.105006 140258407536448 xla_bridge.py:362] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+I0326 23:58:46.047851 140258407536448 run_alphafold.py:404] Have 25 models: ['model_1_multimer_v2_pred_0', 'model_1_multimer_v2_pred_1', 'model_1_multimer_v2_pred_2', 'model_1_multimer_v2_pred_3', 'model_1_multimer_v2_pred_4', 'model_2_multimer_v2_pred_0', 'model_2_multimer_v2_pred_1', 'model_2_multimer_v2_pred_2', 'model_2_multimer_v2_pred_3', 'model_2_multimer_v2_pred_4', 'model_3_multimer_v2_pred_0', 'model_3_multimer_v2_pred_1', 'model_3_multimer_v2_pred_2', 'model_3_multimer_v2_pred_3', 'model_3_multimer_v2_pred_4', 'model_4_multimer_v2_pred_0', 'model_4_multimer_v2_pred_1', 'model_4_multimer_v2_pred_2', 'model_4_multimer_v2_pred_3', 'model_4_multimer_v2_pred_4', 'model_5_multimer_v2_pred_0', 'model_5_multimer_v2_pred_1', 'model_5_multimer_v2_pred_2', 'model_5_multimer_v2_pred_3', 'model_5_multimer_v2_pred_4']
+I0326 23:58:46.048916 140258407536448 run_alphafold.py:421] Using random seed 138087258814573010 for the data pipeline
+I0326 23:58:46.049196 140258407536448 run_alphafold.py:164] Predicting CDNF_ABHD2
+I0326 23:58:46.071158 140258407536448 pipeline_multimer.py:210] Running monomer pipeline on chain A: sp|Q49AH0|CDNF_HUMAN Cerebral dopamine neurotrophic factor OS=Homo sapiens OX=9606 GN=CDNF PE=1 SV=2
+I0326 23:58:46.072976 140258407536448 jackhmmer.py:133] Launching subprocess "/home/users/dkavi/miniconda3/envs/alphafold/bin/jackhmmer -o /dev/null -A /tmp/tmpgcbq627n/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /tmp/tmp4t4l334o.fasta /oak/stanford/groups/katrinjs/alphafold_data/uniref90/uniref90.fasta"
+I0326 23:58:46.197176 140258407536448 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0327 00:13:17.518493 140258407536448 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 871.321 seconds
+I0327 00:13:17.547190 140258407536448 jackhmmer.py:133] Launching subprocess "/home/users/dkavi/miniconda3/envs/alphafold/bin/jackhmmer -o /dev/null -A /tmp/tmpzkzuqc6v/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /tmp/tmp4t4l334o.fasta /oak/stanford/groups/katrinjs/alphafold_data/mgnify/mgy_clusters_2018_12.fa"
+I0327 00:13:17.618881 140258407536448 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0327 00:27:14.674350 140258407536448 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 837.055 seconds
+I0327 00:27:14.774300 140258407536448 hmmbuild.py:121] Launching subprocess ['/home/users/dkavi/miniconda3/envs/alphafold/bin/hmmbuild', '--hand', '--amino', '/tmp/tmpqi7p565a/output.hmm', '/tmp/tmpqi7p565a/query.msa']
+I0327 00:27:14.911743 140258407536448 utils.py:36] Started hmmbuild query
+I0327 00:27:15.240263 140258407536448 hmmbuild.py:128] hmmbuild stdout:
+# hmmbuild :: profile HMM construction from multiple sequence alignments
+# HMMER 3.3.2 (Nov 2020); http://hmmer.org/
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# input alignment file:             /tmp/tmpqi7p565a/query.msa
+# output HMM file:                  /tmp/tmpqi7p565a/output.hmm
+# input alignment is asserted as:   protein
+# model architecture construction:  hand-specified by RF annotation
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# idx name                  nseq  alen  mlen eff_nseq re/pos description
+#---- -------------------- ----- ----- ----- -------- ------ -----------
+1     query                  967   355   163     2.73  0.590 
+
+# CPU time: 0.31u 0.01s 00:00:00.32 Elapsed: 00:00:00.32
+
+
+stderr:
+
+
+I0327 00:27:15.240554 140258407536448 utils.py:40] Finished hmmbuild query in 0.328 seconds
+I0327 00:27:15.242151 140258407536448 hmmsearch.py:103] Launching sub-process ['/home/users/dkavi/miniconda3/envs/alphafold/bin/hmmsearch', '--noali', '--cpu', '8', '--F1', '0.1', '--F2', '0.1', '--F3', '0.1', '--incE', '100', '-E', '100', '--domE', '100', '--incdomE', '100', '-A', '/tmp/tmppmdafdbm/output.sto', '/tmp/tmppmdafdbm/query.hmm', 'dummy_database//dummy_fas.fas']
+I0327 00:27:15.361240 140258407536448 utils.py:36] Started hmmsearch (dummy_fas.fas) query
+I0327 00:27:15.410790 140258407536448 utils.py:40] Finished hmmsearch (dummy_fas.fas) query in 0.049 seconds
+I0327 00:27:15.512820 140258407536448 jackhmmer.py:133] Launching subprocess "/home/users/dkavi/miniconda3/envs/alphafold/bin/jackhmmer -o /dev/null -A /tmp/tmpujh_mvq6/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /tmp/tmp4t4l334o.fasta /oak/stanford/groups/katrinjs/alphafold_data/small_bfd/bfd-first_non_consensus_sequences.fasta"
+I0327 00:27:15.600955 140258407536448 utils.py:36] Started Jackhmmer (bfd-first_non_consensus_sequences.fasta) query
+I0327 00:31:01.799884 140258407536448 utils.py:40] Finished Jackhmmer (bfd-first_non_consensus_sequences.fasta) query in 226.199 seconds
+I0327 00:31:01.827697 140258407536448 templates.py:940] Searching for template for: QGQEAGGRPGADCEVCKEFLNRFYKSLIDRGVNFSLDTIEKELISFCLDTKGKENRLCYYLGATKDAATKILSEVTRPMSVHMPAMKICEKLKKLDSQICELKYEKTLDLASVDLRKMRVAELKQILHSWGEECRACAEKTDYVNLIQELAPKYAATHPKTEL
+I0327 00:31:01.896184 140258407536448 pipeline.py:234] Uniref90 MSA size: 985 sequences.
+I0327 00:31:01.896381 140258407536448 pipeline.py:235] BFD MSA size: 148 sequences.
+I0327 00:31:01.896447 140258407536448 pipeline.py:236] MGnify MSA size: 90 sequences.
+I0327 00:31:01.896506 140258407536448 pipeline.py:237] Final (deduplicated) MSA size: 1187 sequences.
+I0327 00:31:01.896985 140258407536448 pipeline.py:239] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 1.
+I0327 00:31:01.899209 140258407536448 jackhmmer.py:133] Launching subprocess "/home/users/dkavi/miniconda3/envs/alphafold/bin/jackhmmer -o /dev/null -A /tmp/tmpenq_qq8s/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /tmp/tmp4t4l334o.fasta /oak/stanford/groups/katrinjs/alphafold_data/uniprot/uniprot.fasta"
+I0327 00:31:01.990637 140258407536448 utils.py:36] Started Jackhmmer (uniprot.fasta) query
+I0327 00:41:05.589403 140258407536448 utils.py:40] Finished Jackhmmer (uniprot.fasta) query in 603.598 seconds
+I0327 00:41:05.843432 140258407536448 pipeline_multimer.py:210] Running monomer pipeline on chain B: P08910_ABHD2
+I0327 00:41:05.844886 140258407536448 jackhmmer.py:133] Launching subprocess "/home/users/dkavi/miniconda3/envs/alphafold/bin/jackhmmer -o /dev/null -A /tmp/tmppisaxnl5/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /tmp/tmp3ou4jriq.fasta /oak/stanford/groups/katrinjs/alphafold_data/uniref90/uniref90.fasta"
+I0327 00:41:05.935445 140258407536448 utils.py:36] Started Jackhmmer (uniref90.fasta) query
+I0327 00:56:01.590953 140258407536448 utils.py:40] Finished Jackhmmer (uniref90.fasta) query in 895.655 seconds
+I0327 00:56:02.315998 140258407536448 jackhmmer.py:133] Launching subprocess "/home/users/dkavi/miniconda3/envs/alphafold/bin/jackhmmer -o /dev/null -A /tmp/tmp2k_v1nlx/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /tmp/tmp3ou4jriq.fasta /oak/stanford/groups/katrinjs/alphafold_data/mgnify/mgy_clusters_2018_12.fa"
+I0327 00:56:02.406542 140258407536448 utils.py:36] Started Jackhmmer (mgy_clusters_2018_12.fa) query
+I0327 01:09:58.640328 140258407536448 utils.py:40] Finished Jackhmmer (mgy_clusters_2018_12.fa) query in 836.233 seconds
+I0327 01:10:01.699605 140258407536448 hmmbuild.py:121] Launching subprocess ['/home/users/dkavi/miniconda3/envs/alphafold/bin/hmmbuild', '--hand', '--amino', '/tmp/tmpycd2hgzr/output.hmm', '/tmp/tmpycd2hgzr/query.msa']
+I0327 01:10:01.792347 140258407536448 utils.py:36] Started hmmbuild query
+I0327 01:10:03.275188 140258407536448 hmmbuild.py:128] hmmbuild stdout:
+# hmmbuild :: profile HMM construction from multiple sequence alignments
+# HMMER 3.3.2 (Nov 2020); http://hmmer.org/
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# input alignment file:             /tmp/tmpycd2hgzr/query.msa
+# output HMM file:                  /tmp/tmpycd2hgzr/output.hmm
+# input alignment is asserted as:   protein
+# model architecture construction:  hand-specified by RF annotation
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# idx name                  nseq  alen  mlen eff_nseq re/pos description
+#---- -------------------- ----- ----- ----- -------- ------ -----------
+1     query                 9957  2338   395     8.77  0.590 
+
+# CPU time: 1.40u 0.07s 00:00:01.47 Elapsed: 00:00:01.47
+
+
+stderr:
+
+
+I0327 01:10:03.275465 140258407536448 utils.py:40] Finished hmmbuild query in 1.483 seconds
+I0327 01:10:03.289101 140258407536448 hmmsearch.py:103] Launching sub-process ['/home/users/dkavi/miniconda3/envs/alphafold/bin/hmmsearch', '--noali', '--cpu', '8', '--F1', '0.1', '--F2', '0.1', '--F3', '0.1', '--incE', '100', '-E', '100', '--domE', '100', '--incdomE', '100', '-A', '/tmp/tmpz2_niow5/output.sto', '/tmp/tmpz2_niow5/query.hmm', 'dummy_database//dummy_fas.fas']
+I0327 01:10:03.381504 140258407536448 utils.py:36] Started hmmsearch (dummy_fas.fas) query
+I0327 01:10:03.423692 140258407536448 utils.py:40] Finished hmmsearch (dummy_fas.fas) query in 0.042 seconds
+I0327 01:10:06.010395 140258407536448 jackhmmer.py:133] Launching subprocess "/home/users/dkavi/miniconda3/envs/alphafold/bin/jackhmmer -o /dev/null -A /tmp/tmpn9qzzm97/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /tmp/tmp3ou4jriq.fasta /oak/stanford/groups/katrinjs/alphafold_data/small_bfd/bfd-first_non_consensus_sequences.fasta"
+I0327 01:10:06.100742 140258407536448 utils.py:36] Started Jackhmmer (bfd-first_non_consensus_sequences.fasta) query
+I0327 01:13:43.688645 140258407536448 utils.py:40] Finished Jackhmmer (bfd-first_non_consensus_sequences.fasta) query in 217.587 seconds
+I0327 01:13:43.922653 140258407536448 templates.py:940] Searching for template for: RCLNLKSPTAPPDLYFQDSGLSRFLLKSCPLLTKEYIPPLIWGKSGHIQTALYGKMGRVRSPHPYGHRKFITMSDGATSTFDLFEPLAEHCVGDDITMVICPGIANHSEKQYIRTFVDYAQKNGYRCAVLNHLGALPNIELTSPRMFTYGCTWEFGAMVNYIKKTYPLTQLVVVGFSLGGNIVCKYLGETQANQEKVLCCVSVCQGYSALRAQETFMQWDQCRRFYNFLMADNMKKIILSHRQALFGDHVKKPQSLEDTDLSRLYTATSLMQIDDNVMRKFHGYNSLKEYYEEESCMRYLHRIYVPLMLVNAADDPLVHESLLTIPKSLSEKRENVMFVLPLHGGHLGFFEGSVLFPEPLTWMDKLVVEYANAICQWERNKLQCSDTEQVEADLE
+I0327 01:13:44.666659 140258407536448 pipeline.py:234] Uniref90 MSA size: 10000 sequences.
+I0327 01:13:44.666818 140258407536448 pipeline.py:235] BFD MSA size: 823 sequences.
+I0327 01:13:44.666859 140258407536448 pipeline.py:236] MGnify MSA size: 501 sequences.
+I0327 01:13:44.666896 140258407536448 pipeline.py:237] Final (deduplicated) MSA size: 11068 sequences.
+I0327 01:13:44.666950 140258407536448 pipeline.py:239] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 1.
+I0327 01:13:44.687967 140258407536448 jackhmmer.py:133] Launching subprocess "/home/users/dkavi/miniconda3/envs/alphafold/bin/jackhmmer -o /dev/null -A /tmp/tmpdwse65gn/output.sto --noali --F1 0.0005 --F2 5e-05 --F3 5e-07 --incE 0.0001 -E 0.0001 --cpu 8 -N 1 /tmp/tmp3ou4jriq.fasta /oak/stanford/groups/katrinjs/alphafold_data/uniprot/uniprot.fasta"
+I0327 01:13:44.777534 140258407536448 utils.py:36] Started Jackhmmer (uniprot.fasta) query
+I0327 01:23:45.456666 140258407536448 utils.py:40] Finished Jackhmmer (uniprot.fasta) query in 600.679 seconds
+I0327 01:23:54.068557 140258407536448 run_alphafold.py:200] Running model model_1_multimer_v2_pred_0 on CDNF_ABHD2
+I0327 01:23:54.069394 140258407536448 model.py:165] Running predict with shape(feat) = {'aatype': (558,), 'residue_index': (558,), 'seq_length': (), 'msa': (2531, 558), 'num_alignments': (), 'template_aatype': (4, 558), 'template_all_atom_mask': (4, 558, 37), 'template_all_atom_positions': (4, 558, 37, 3), 'asym_id': (558,), 'sym_id': (558,), 'entity_id': (558,), 'deletion_matrix': (2531, 558), 'deletion_mean': (558,), 'all_atom_mask': (558, 37), 'all_atom_positions': (558, 37, 3), 'assembly_num_chains': (), 'entity_mask': (558,), 'num_templates': (), 'cluster_bias_mask': (2531,), 'bert_mask': (2531, 558), 'seq_mask': (558,), 'msa_mask': (2531, 558)}
+Traceback (most recent call last):
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/run_alphafold.py", line 450, in <module>
+    app.run(main)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/absl/app.py", line 308, in run
+    _run_main(main, args)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/absl/app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/run_alphafold.py", line 426, in main
+    predict_structure(
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/run_alphafold.py", line 208, in predict_structure
+    prediction_result = model_runner.predict(processed_feature_dict,
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/model.py", line 167, in predict
+    result = self.apply(self.params, jax.random.PRNGKey(random_seed), feat)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/jax/_src/api.py", line 622, in cache_miss
+    execute = dispatch._xla_call_impl_lazy(fun_, *tracers, **params)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/jax/_src/dispatch.py", line 241, in _xla_call_impl_lazy
+    return xla_callable(fun, device, backend, name, donated_invars, keep_unused,
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/jax/linear_util.py", line 303, in memoized_fun
+    ans = call(fun, *args)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/jax/_src/dispatch.py", line 357, in _xla_callable_uncached
+    computation = sharded_lowering(fun, device, backend, name, donated_invars,
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/jax/_src/dispatch.py", line 348, in sharded_lowering
+    return pxla.lower_sharding_computation(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/jax/_src/profiler.py", line 314, in wrapper
+    return func(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/jax/interpreters/pxla.py", line 2792, in lower_sharding_computation
+    jaxpr, global_out_avals, consts = pe.trace_to_jaxpr_final(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/jax/_src/profiler.py", line 314, in wrapper
+    return func(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/jax/interpreters/partial_eval.py", line 2065, in trace_to_jaxpr_final
+    jaxpr, out_avals, consts = trace_to_subjaxpr_dynamic(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/jax/interpreters/partial_eval.py", line 1998, in trace_to_subjaxpr_dynamic
+    ans = fun.call_wrapped(*in_tracers_)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/jax/linear_util.py", line 167, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/haiku/_src/transform.py", line 128, in apply_fn
+    out, state = f.apply(params, {}, *args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/haiku/_src/transform.py", line 357, in apply_fn
+    out = f(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/model.py", line 76, in _forward_fn
+    model = modules_multimer.AlphaFold(self.config.model)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/haiku/_src/module.py", line 123, in __call__
+    init(module, *args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/haiku/_src/module.py", line 421, in wrapped
+    if jax.config.jax_experimental_name_stack and module_name:
+jax._src.traceback_util.UnfilteredStackTrace: AttributeError: 'Config' object has no attribute 'jax_experimental_name_stack'
+
+The stack trace below excludes JAX-internal frames.
+The preceding is the original exception that occurred, unmodified.
+
+--------------------
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/run_alphafold.py", line 450, in <module>
+    app.run(main)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/absl/app.py", line 308, in run
+    _run_main(main, args)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/absl/app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/run_alphafold.py", line 426, in main
+    predict_structure(
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/run_alphafold.py", line 208, in predict_structure
+    prediction_result = model_runner.predict(processed_feature_dict,
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/model.py", line 167, in predict
+    result = self.apply(self.params, jax.random.PRNGKey(random_seed), feat)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/haiku/_src/transform.py", line 128, in apply_fn
+    out, state = f.apply(params, {}, *args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/haiku/_src/transform.py", line 357, in apply_fn
+    out = f(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/model.py", line 76, in _forward_fn
+    model = modules_multimer.AlphaFold(self.config.model)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/haiku/_src/module.py", line 123, in __call__
+    init(module, *args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.9/site-packages/haiku/_src/module.py", line 421, in wrapped
+    if jax.config.jax_experimental_name_stack and module_name:
+AttributeError: 'Config' object has no attribute 'jax_experimental_name_stack'
