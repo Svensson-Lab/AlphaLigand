@@ -56,7 +56,7 @@ logdir=$out_dir #directory to write logs to, same as outdir by default
 If you wish to only (pre)compute MSAs for a given directory of fasta sequences, run the `compute_msa_parallel` script. [Link to precomputed MSAs](https://drive.google.com/file/d/1CzcO4JfKO8NrnVQvIKIQTCn__ha1ZWly/view?usp=share_link). Then after editing to file according to the "Inputs" heading, you can call `bash compute_msa_parallel`.
 
 ### Predictions
-For predictions, you also need to provide a path to the alphafold installation in the "installation_dir" variable in the `predict_structures.sh` file. 
+For predictions, you also need to provide a path to the alphafold installation in the "installation_dir" variable in the `predict_structures.sh` file. Such as: "/home/groups/katrinjs/alphafold-2.2.0/". The run_alphafold.py script here will be used to generate predictions. If you don't have alphafold installed, you can do so by cloning Deepmind's [repository](https://github.com/deepmind/alphafold). 
 
 If you wish to do predictions AND MSAs, you can run the `predict_structures.sh` script. Precomputed MSAs located in the out directory is used by default, you can download MSAs for the library described in (https://www.biorxiv.org/content/10.1101/2023.03.16.531341v1) from the link above. If there are no MSAs in the out directory, the prediction script will compute them as necessary. Then after editing to file according to the "Inputs" heading, you can call `bash predict_structures.sh`.
 
