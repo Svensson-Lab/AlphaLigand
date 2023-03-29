@@ -11,6 +11,7 @@ run_parafold_path=$3 #path to run_alphafold.sh script in the parallelfold instal
 dbpath=$4 #directory to alphafold database folder
 i=$5 #index of input fasta file 
 paths=$6 #concatenated string of path to each database file split by ";", see compute_msa_parallel.sh file for ordering
+installation_dir=$7
 
 filename=$(basename -- "$input")
 gene="${filename%.*}"
@@ -32,6 +33,6 @@ echo "Started Prediction:"$(date +"%Y-%m-%d %T") > $log
 #	-c reduced_dbs \
 #	-use_gpu_relax=false
 
-bash $run_parafold_path -d $dbpath -b $paths -o $output -p multimer -m multimer -f $input -t 1800-01-01 -c reduced_dbs -e false -g false
-
+bash $run_parafold_path -d $dbpath -b $paths -o $output -p true -m multimer -f $input -t 1800-01-01 -c reduced_dbs -e false -g false -q "/home/groups/katrinjs/alphafold-2.2.0/"
+ 
 echo "Finished Prediction:"$(date +"%Y-%m-%d %T") >> $log

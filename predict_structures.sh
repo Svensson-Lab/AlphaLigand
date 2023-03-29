@@ -1,12 +1,12 @@
 #!/bin/bash
 ## Edit below with your requirements
 fasta_path="/home/groups/katrinjs/inputs" #path to receptor fasta files 
-run_parafold_path="run_parafold_no_template.sh" #path to run_alphafold.sh script
+run_parafold_path="run_alphafold_test.sh" #path to run_alphafold.sh script
 
 out_dir="/home/groups/katrinjs/new_outs" #directory to write to
+installation_dir="/home/groups/katrinjs/alphafold/" #directory of alphafold installation, i.e. where run_alphafold.py is located
 data_dir="$OAK/alphafold_data" #directory to alphafold database folder, (make sure not to have "/" at the end)  
 logdir=$out_dir #directory to write logs to, same as outdir by default
-
 ## Stop editing here
 
 ##database paths
@@ -45,7 +45,8 @@ sed -i -e 's/\r$//' run_alphafold_test.sh
 #submit indiviual jobs per each sequence
 for (( i=0; i<${num_files}; i++ ));
 do
-    sbatch ./predict_from_precomputed.sh $fasta_path/${files[$i]} $out_dir $run_parafold_path $data_dir/ $i $paths &
+    ./predict_from_precomputed.sh $fasta_path/${files[$i]} $out_dir $run_parafold_path $data_dir/ $i $paths $installation_dir &
+    #sbatch     ./predict_from_precomputed.sh $fasta_path/${files[$i]} $out_dir $run_parafold_path $data_dir/ $i $paths $installation_dir &
 done
 
 

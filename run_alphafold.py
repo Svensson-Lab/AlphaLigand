@@ -27,7 +27,6 @@ from absl import app
 from absl import flags
 from absl import logging
 
-
 # Internal import (7716).
 
 logging.set_verbosity(logging.INFO)
@@ -124,20 +123,6 @@ flags.DEFINE_string('alphafold_dir', None, 'Path to installation directory of al
 FLAGS = flags.FLAGS
 
 #MODIFIED PART, add alphafold library to this file (running from out of the installation directory)
-#sys.path.append(FLAGS.alphafold_dir)
-
-from alphafold.common import protein
-from alphafold.common import residue_constants
-from alphafold.data import pipeline
-from alphafold.data import pipeline_multimer
-from alphafold.data import templates
-from alphafold.data.tools import hhsearch
-from alphafold.data.tools import hmmsearch
-from alphafold.model import config
-from alphafold.model import data
-from alphafold.model import model
-from alphafold.relax import relax
-import numpy as np
 
 MAX_TEMPLATE_HITS = 20
 RELAX_MAX_ITERATIONS = 0
@@ -155,7 +140,7 @@ def _check_flag(flag_name: str,
     raise ValueError(f'{flag_name} must {verb} set when running with '
                      f'"--{other_flag_name}={FLAGS[other_flag_name].value}".')
 
-
+"""
 def predict_structure(
     fasta_path: str,
     fasta_name: str,
@@ -165,7 +150,18 @@ def predict_structure(
     amber_relaxer: relax.AmberRelaxation,
     benchmark: bool,
     random_seed: int):
+"""    
+def predict_structure(
+    fasta_path: str,
+    fasta_name: str,
+    output_dir_base: str,
+    data_pipeline,
+    model_runners,
+    amber_relaxer,
+    benchmark: bool,
+    random_seed: int):
   """Predicts structure using AlphaFold for the given sequence."""
+  
   logging.info('Predicting %s', fasta_name)
   timings = {}
   output_dir = os.path.join(output_dir_base, fasta_name)
@@ -340,6 +336,22 @@ def main(argv):
   fasta_names = [pathlib.Path(p).stem for p in FLAGS.fasta_paths]
   if len(fasta_names) != len(set(fasta_names)):
     raise ValueError('All FASTA paths must have a unique basename.')
+
+  sys.path.append(FLAGS.alphafold_dir)
+
+  from alphafold.common import protein
+  from alphafold.common import residue_constants
+  from alphafold.data import pipeline
+  from alphafold.data import pipeline_multimer
+  from alphafold.data import templates
+  from alphafold.data.tools import hhsearch
+  from alphafold.data.tools import hmmsearch
+  from alphafold.model import config
+  from alphafold.model import data
+  from alphafold.model import model
+  from alphafold.relax import relax
+  import numpy as np
+
 
   if run_multimer_system:
     template_searcher = hmmsearch.Hmmsearch(
