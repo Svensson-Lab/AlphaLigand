@@ -1,15 +1,19 @@
 The collection of scripts in this repository predicts the structures of protein-multimers using lists of fasta files in a directory using [Slurm](https://slurm.schedmd.com/documentation.html).
 
 ## Installation
-1. Install miniconda:<br> 
-`wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash Miniconda3-latest-Linux-x86_64.sh` 
-1. Clone this repository: <br> 
+1. Install miniconda: 
+```
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash Miniconda3-latest-Linux-x86_64.sh
+``` 
+1. Clone this repository: 
 ```
 git clone git@github.com:Svensson-Lab/run-hpc-alphafold.git <br> 
 cd run-hpc-alphafold
 ```
-1. Install requirements <br> 
-```conda create --name alphafold --file req.txt```
+1. Install requirements
+```
+conda create --name alphafold --file req.txt
+```
 
 - Change `jaxlib==0.3.25+cuda11.cudnn805` version if this is not supported in your system
 ``` 
@@ -23,9 +27,9 @@ pip install --upgrade --no-cache-dir jax==0.3.25 jaxlib==0.3.25+cuda11.cudnn805 
 
 1. Set permissions for shell files: <br>
 ```
-chmod +x compute_msa.sh <br>
-chmod +x compute_msa_parallel.sh <br>
-chmod +x predict_structures.sh <br>
+chmod +x compute_msa.sh
+chmod +x compute_msa_parallel.sh
+chmod +x predict_structures.sh 
 chmod +x predict_from_precomputed.sh
 ```
 
