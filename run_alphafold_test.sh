@@ -74,9 +74,8 @@ while getopts ":d:b:o:f:t:g:r:e:n:a:m:c:p:l:q:" i; do
 	;;
 	q)
 		installation_dir=$OPTARG
-		#echo $installation_dir
-        ;;
-        esac
+    ;;
+    esac
 done
 
 # Parse input and set defaults
@@ -139,7 +138,7 @@ fi
 # This bash script looks for the run_alphafold.py script in its current working directory, if it does not exist then exits
 current_working_dir=$(pwd)
 #alphafold_script="$current_working_dir/ParallelFold/run_alphafold.py"
-alphafold_script="/home/groups/katrinjs/alphafold/run_alphafold.py"
+alphafold_script="$installation_dir/run_alphafold.py"
 
 if [ ! -f "$alphafold_script" ]; then
     echo "Alphafold python script $alphafold_script does not exist."
@@ -190,7 +189,9 @@ hhsearch_binary_path=$(which hhsearch)
 jackhmmer_binary_path=$(which jackhmmer)
 kalign_binary_path=$(which kalign)
 
-command_args="--fasta_paths=$fasta_path --output_dir=$output_dir --max_template_date=$max_template_date --db_preset=$db_preset --model_preset=$model_preset --benchmark=$benchmark --use_precomputed_msas=$use_precomputed_msas --num_multimer_predictions_per_model=$num_multimer_predictions_per_model --run_relax=$run_relax --use_gpu_relax=$use_gpu_relax --alphafold_dir=$installation_dir --logtostderr"
+#command_args="--fasta_paths=$fasta_path --output_dir=$output_dir --max_template_date=$max_template_date --db_preset=$db_preset --model_preset=$model_preset --benchmark=$benchmark --use_precomputed_msas=$use_precomputed_msas --num_multimer_predictions_per_model=$num_multimer_predictions_per_model --use_gpu_relax=$use_gpu_relax --alphafold_dir=$installation_dir --logtostderr"
+
+command_args="--fasta_paths=$fasta_path --output_dir=$output_dir --max_template_date=$max_template_date --db_preset=$db_preset --model_preset=$model_preset --benchmark=$benchmark --use_precomputed_msas=$use_precomputed_msas --num_multimer_predictions_per_model=$num_multimer_predictions_per_model --use_gpu_relax=$use_gpu_relax --logtostderr"
 
 database_paths="--uniref90_database_path=$uniref90_database_path --mgnify_database_path=$mgnify_database_path --data_dir=$data_dir --template_mmcif_dir=$template_mmcif_dir --obsolete_pdbs_path=$obsolete_pdbs_path"
 
@@ -209,4 +210,4 @@ else
 fi
 
 # Run AlphaFold with required parameters
-$(python $alphafold_script $binary_paths $database_paths $command_args)
+$(python $alphafold_script $binary_paths $database_paths $command_args) #>> $output_dir

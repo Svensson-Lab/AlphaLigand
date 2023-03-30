@@ -1,16 +1,16 @@
 The collection of scripts in this repository predicts the structures of protein-multimers using lists of fasta files in a directory using [Slurm](https://slurm.schedmd.com/documentation.html).
 
 ## Installation
-1. Install miniconda: 
+Install miniconda: 
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash Miniconda3-latest-Linux-x86_64.sh
 ``` 
-1. Clone this repository: 
+Clone this repository: 
 ```
-git clone git@github.com:Svensson-Lab/run-hpc-alphafold.git <br> 
+git clone git@github.com:Svensson-Lab/run-hpc-alphafold.git 
 cd run-hpc-alphafold
 ```
-1. Install requirements
+Install requirements
 ```
 conda create --name alphafold --file req.txt
 ```
@@ -22,10 +22,10 @@ pip install absl-py==1.0.0 biopython==1.79 chex==0.0.7 dm-haiku==0.0.9 dm-tree==
 pip install --upgrade --no-cache-dir jax==0.3.25 jaxlib==0.3.25+cuda11.cudnn805 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 ```
 
-1. Activate environment: <br>
+Activate environment:
 ```conda activate alphafold```
 
-1. Set permissions for shell files: <br>
+1. Set permissions for shell files: 
 ```
 chmod +x compute_msa.sh
 chmod +x compute_msa_parallel.sh
@@ -34,6 +34,7 @@ chmod +x predict_from_precomputed.sh
 ```
 
 ## Usage
+Do not move the scripts above from the run-hpc-alphafold folder, this will cause errors in accessing paths.
 
 ### Inputs
 The inputs should be in a directory with two folders: "Ligands" and "Receptors", each containing .fasta files for the required sequences. Then, the script will create another directory "fasta_sequences" which holds the merged sequences, these are the sequences we will be getting predictions for. You only need to provide a folder "Ligands" which contains a list of ligand fasta files and "Receptors" which contains the fasta files for your receptors. Like so: 
@@ -62,7 +63,7 @@ logdir=$out_dir #directory to write logs to, same as outdir by default
 1. `logdir` is directory to write logs to, same as outdir by default
 
 ### Compute MSAs 
-If you wish to only (pre)compute MSAs for a given directory of fasta sequences, run the `compute_msa_parallel` script. [Link to precomputed MSAs](https://drive.google.com/file/d/1CzcO4JfKO8NrnVQvIKIQTCn__ha1ZWly/view?usp=share_link). Then after editing to file according to the "Inputs" heading, you can call `bash compute_msa_parallel`.
+If you wish to only (pre)compute MSAs for a given directory of fasta sequences, run the `compute_msa_parallel` script. [Link to precomputed MSAs](https://drive.google.com/file/d/1CzcO4JfKO8NrnVQvIKIQTCn__ha1ZWly/view?usp=share_link). Then after editing the file according to the "Inputs" heading, you can call `bash compute_msa_parallel`.
 
 ### Predictions
 For predictions, you also need to provide a path to the alphafold installation in the "installation_dir" variable in the `predict_structures.sh` file. Such as: "/home/groups/katrinjs/alphafold-2.2.0/". The run_alphafold.py script here will be used to generate predictions. If you don't have alphafold installed, you can do so by cloning Deepmind's [repository](https://github.com/deepmind/alphafold). 
