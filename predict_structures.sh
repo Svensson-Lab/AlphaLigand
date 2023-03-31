@@ -1,8 +1,7 @@
 #!/bin/bash
 ## Edit below with your requirements
 fasta_path="/home/groups/katrinjs/inputs" #path to receptor fasta files 
-run_parafold_path="run_alphafold_test.sh" #path to run_alphafold.sh script
-
+run_parafold_path="run_alphafold_test.sh" #path to run_alphafold.sh script, no need to change unless you have a specific use 
 out_dir="/home/groups/katrinjs/new_outs" #directory to write to
 installation_dir="/home/groups/katrinjs/alphafold/" #directory of alphafold installation, i.e. where run_alphafold.py is located
 data_dir="$OAK" #directory to alphafold database folder, (make sure not to have "/" at the end)  
@@ -10,10 +9,10 @@ logdir=$out_dir #directory to write logs to, same as outdir by default
 
 ## Stop editing here
 
-##database paths
+##database paths, (the dates are set as the most recent version of the database, modify based on your installation if necessary)
 bfd_database_path="$data_dir/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt"
 small_bfd_database_path="$data_dir/small_bfd/bfd-first_non_consensus_sequences.fasta"
-mgnify_database_path="$data_dir/mgnify/mgy_clusters_2018_12.fa"
+mgnify_database_path="$data_dir/mgnify/mgy_clusters_2022_05.fa"
 pdb_seqres_database_path="$data_dir/dummy_database/dummy_fas.fas"
 uniref30_database_path="$data_dir/uniref30/UniRef30_2021_03"   # make sure your alphafold installation is up to date, i.e. has uniref30 instead of uniclust30
 uniref90_database_path="$data_dir/uniref90/uniref90.fasta"
@@ -46,8 +45,8 @@ sed -i -e 's/\r$//' run_alphafold_test.sh
 #submit indiviual jobs per each sequence
 for (( i=0; i<${num_files}; i++ ));
 do
-    ./predict_from_precomputed.sh $fasta_path/${files[$i]} $out_dir $run_parafold_path $data_dir/ $i $paths $installation_dir &
-    #sbatch ./predict_from_precomputed.sh $fasta_path/${files[$i]} $out_dir $run_parafold_path $data_dir/ $i $paths $installation_dir &
+    #./predict_from_precomputed.sh $fasta_path/${files[$i]} $out_dir $run_parafold_path $data_dir/ $i $paths $installation_dir &
+    sbatch ./predict_from_precomputed.sh $fasta_path/${files[$i]} $out_dir $run_parafold_path $data_dir/ $i $paths $installation_dir &
 done
 
 
