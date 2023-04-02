@@ -1,0 +1,320 @@
+/home/groups/katrinjs/inputs//Ligands/BMP10.fasta
+/oak/stanford/groups/katrinjs/
+I0401 20:58:56.678582 140582208546624 templates.py:857] Using precomputed obsolete pdbs dummy_database//dummy_obsolete.dat.
+I0401 20:58:56.906047 140582208546624 xla_bridge.py:353] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: 
+2023-04-01 20:58:56.907283: W external/org_tensorflow/tensorflow/tsl/platform/default/dso_loader.cc:66] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2023-04-01 20:58:56.907310: W external/org_tensorflow/tensorflow/compiler/xla/stream_executor/cuda/cuda_driver.cc:265] failed call to cuInit: UNKNOWN ERROR (303)
+I0401 20:58:56.907396 140582208546624 xla_bridge.py:353] Unable to initialize backend 'cuda': FAILED_PRECONDITION: No visible GPU devices.
+I0401 20:58:56.907535 140582208546624 xla_bridge.py:353] Unable to initialize backend 'rocm': NOT_FOUND: Could not find registered platform with name: "rocm". Available platform names are: Interpreter Host CUDA
+I0401 20:58:56.907859 140582208546624 xla_bridge.py:353] Unable to initialize backend 'tpu': module 'jaxlib.xla_extension' has no attribute 'get_tpu_client'
+I0401 20:58:56.907966 140582208546624 xla_bridge.py:353] Unable to initialize backend 'plugin': xla_extension has no attributes named get_plugin_device_client. Compile TensorFlow with //tensorflow/compiler/xla/python:enable_plugin_device set to true (defaults to false) to enable this.
+W0401 20:58:56.908050 140582208546624 xla_bridge.py:360] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+I0401 20:59:00.499135 140582208546624 run_alphafold.py:406] Have 25 models: ['model_1_multimer_v2_pred_0', 'model_1_multimer_v2_pred_1', 'model_1_multimer_v2_pred_2', 'model_1_multimer_v2_pred_3', 'model_1_multimer_v2_pred_4', 'model_2_multimer_v2_pred_0', 'model_2_multimer_v2_pred_1', 'model_2_multimer_v2_pred_2', 'model_2_multimer_v2_pred_3', 'model_2_multimer_v2_pred_4', 'model_3_multimer_v2_pred_0', 'model_3_multimer_v2_pred_1', 'model_3_multimer_v2_pred_2', 'model_3_multimer_v2_pred_3', 'model_3_multimer_v2_pred_4', 'model_4_multimer_v2_pred_0', 'model_4_multimer_v2_pred_1', 'model_4_multimer_v2_pred_2', 'model_4_multimer_v2_pred_3', 'model_4_multimer_v2_pred_4', 'model_5_multimer_v2_pred_0', 'model_5_multimer_v2_pred_1', 'model_5_multimer_v2_pred_2', 'model_5_multimer_v2_pred_3', 'model_5_multimer_v2_pred_4']
+I0401 20:59:00.499357 140582208546624 run_alphafold.py:423] Using random seed 123448103286196073 for the data pipeline
+I0401 20:59:00.499613 140582208546624 run_alphafold.py:169] Predicting BMP10
+I0401 20:59:00.507286 140582208546624 pipeline_multimer.py:210] Running monomer pipeline on chain A: 7PPC_1|Chains A, B, C, D|Bone morphogenetic protein 10|Homo sapiens (9606) O95393
+W0401 20:59:00.507941 140582208546624 pipeline.py:100] Reading MSA from file /home/groups/katrinjs/new_outs/ligands_msas/BMP10/msas/A/uniref90_hits.sto
+W0401 20:59:00.579555 140582208546624 pipeline.py:100] Reading MSA from file /home/groups/katrinjs/new_outs/ligands_msas/BMP10/msas/A/mgnify_hits.sto
+I0401 20:59:01.191198 140582208546624 hmmbuild.py:121] Launching subprocess ['/home/users/dkavi/miniconda3/envs/alphafold/bin/hmmbuild', '--hand', '--amino', '/tmp/tmpzj9hmd55/output.hmm', '/tmp/tmpzj9hmd55/query.msa']
+I0401 20:59:01.255813 140582208546624 utils.py:36] Started hmmbuild query
+I0401 20:59:01.661080 140582208546624 hmmbuild.py:128] hmmbuild stdout:
+# hmmbuild :: profile HMM construction from multiple sequence alignments
+# HMMER 3.3.2 (Nov 2020); http://hmmer.org/
+# Copyright (C) 2020 Howard Hughes Medical Institute.
+# Freely distributed under the BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# input alignment file:             /tmp/tmpzj9hmd55/query.msa
+# output HMM file:                  /tmp/tmpzj9hmd55/output.hmm
+# input alignment is asserted as:   protein
+# model architecture construction:  hand-specified by RF annotation
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# idx name                  nseq  alen  mlen eff_nseq re/pos description
+#---- -------------------- ----- ----- ----- -------- ------ -----------
+1     query                 7441   452   108     2.65  0.590 
+
+# CPU time: 0.37u 0.02s 00:00:00.39 Elapsed: 00:00:00.40
+
+
+stderr:
+
+
+I0401 20:59:01.661264 140582208546624 utils.py:40] Finished hmmbuild query in 0.405 seconds
+I0401 20:59:01.663166 140582208546624 hmmsearch.py:103] Launching sub-process ['/home/users/dkavi/miniconda3/envs/alphafold/bin/hmmsearch', '--noali', '--cpu', '8', '--F1', '0.1', '--F2', '0.1', '--F3', '0.1', '--incE', '100', '-E', '100', '--domE', '100', '--incdomE', '100', '-A', '/tmp/tmp80jjrrxp/output.sto', '/tmp/tmp80jjrrxp/query.hmm', 'dummy_database//dummy_fas.fas']
+I0401 20:59:01.733529 140582208546624 utils.py:36] Started hmmsearch (dummy_fas.fas) query
+I0401 20:59:01.757228 140582208546624 utils.py:40] Finished hmmsearch (dummy_fas.fas) query in 0.023 seconds
+W0401 20:59:02.433502 140582208546624 pipeline.py:100] Reading MSA from file /home/groups/katrinjs/new_outs/ligands_msas/BMP10/msas/A/small_bfd_hits.sto
+I0401 20:59:02.450668 140582208546624 templates.py:940] Searching for template for: NAKGNYCKRTPLYIDFKEIGWDSWIIAPPGYEAYECRGVCNYPLAEHLTPTKHAIIQALVHLKNSQKASKACCVPTKLEPISILYLDKGVVTYKFKYEGMAVSECGCR
+I0401 20:59:02.642472 140582208546624 pipeline.py:234] Uniref90 MSA size: 10000 sequences.
+I0401 20:59:02.642633 140582208546624 pipeline.py:235] BFD MSA size: 329 sequences.
+I0401 20:59:02.642684 140582208546624 pipeline.py:236] MGnify MSA size: 280 sequences.
+I0401 20:59:02.642729 140582208546624 pipeline.py:237] Final (deduplicated) MSA size: 7792 sequences.
+I0401 20:59:02.643083 140582208546624 pipeline.py:239] Total number of templates (NB: this can include bad templates and is later filtered to top 4): 1.
+I0401 20:59:02.698376 140582208546624 run_alphafold.py:205] Running model model_1_multimer_v2_pred_0 on BMP10
+I0401 20:59:02.699064 140582208546624 model.py:165] Running predict with shape(feat) = {'aatype': (108,), 'residue_index': (108,), 'seq_length': (), 'msa': (2048, 108), 'num_alignments': (), 'template_aatype': (4, 108), 'template_all_atom_mask': (4, 108, 37), 'template_all_atom_positions': (4, 108, 37, 3), 'asym_id': (108,), 'sym_id': (108,), 'entity_id': (108,), 'deletion_matrix': (2048, 108), 'deletion_mean': (108,), 'all_atom_mask': (108, 37), 'all_atom_positions': (108, 37, 3), 'assembly_num_chains': (), 'entity_mask': (108,), 'num_templates': (), 'cluster_bias_mask': (2048,), 'bert_mask': (2048, 108), 'seq_mask': (108,), 'msa_mask': (2048, 108)}
+Traceback (most recent call last):
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/run_alphafold.py", line 452, in <module>
+    app.run(main)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/run_alphafold.py", line 428, in main
+    predict_structure(
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/run_alphafold.py", line 213, in predict_structure
+    prediction_result = model_runner.predict(processed_feature_dict,
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/model.py", line 167, in predict
+    result = self.apply(self.params, jax.random.PRNGKey(random_seed), feat)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/api.py", line 622, in cache_miss
+    execute = dispatch._xla_call_impl_lazy(fun_, *tracers, **params)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/dispatch.py", line 236, in _xla_call_impl_lazy
+    return xla_callable(fun, device, backend, name, donated_invars, keep_unused,
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/linear_util.py", line 303, in memoized_fun
+    ans = call(fun, *args)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/dispatch.py", line 359, in _xla_callable_uncached
+    return lower_xla_callable(fun, device, backend, name, donated_invars, False,
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/profiler.py", line 314, in wrapper
+    return func(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/dispatch.py", line 445, in lower_xla_callable
+    jaxpr, out_type, consts = pe.trace_to_jaxpr_final2(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/profiler.py", line 314, in wrapper
+    return func(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/interpreters/partial_eval.py", line 2077, in trace_to_jaxpr_final2
+    jaxpr, out_type, consts = trace_to_subjaxpr_dynamic2(fun, main, debug_info)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/interpreters/partial_eval.py", line 2027, in trace_to_subjaxpr_dynamic2
+    ans = fun.call_wrapped(*in_tracers_)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/linear_util.py", line 167, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/transform.py", line 128, in apply_fn
+    out, state = f.apply(params, {}, *args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/transform.py", line 357, in apply_fn
+    out = f(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/model.py", line 77, in _forward_fn
+    return model(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 426, in wrapped
+    out = f(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/contextlib.py", line 75, in inner
+    return func(*args, **kwds)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 272, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 485, in __call__
+    prev, safe_key = hk.fori_loop(0, num_iter, recycle_body, (prev, safe_key))
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/stateful.py", line 687, in fori_loop
+    state, val = jax.lax.fori_loop(lower, upper, pure_body_fun, init_val)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/lax/control_flow/loops.py", line 1692, in fori_loop
+    (_, result), _ = scan(_fori_scan_body_fun(body_fun), (lower_, init_val),
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/lax/control_flow/loops.py", line 259, in scan
+    init_flat, carry_avals, carry_avals_out, init_tree, *rest = _create_jaxpr(init)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/lax/control_flow/loops.py", line 245, in _create_jaxpr
+    jaxpr, consts, out_tree = _initial_style_jaxpr(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/lax/control_flow/common.py", line 60, in _initial_style_jaxpr
+    jaxpr, consts, out_tree = _initial_style_open_jaxpr(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/lax/control_flow/common.py", line 54, in _initial_style_open_jaxpr
+    jaxpr, _, consts = pe.trace_to_jaxpr_dynamic(wrapped_fun, in_avals, debug)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/profiler.py", line 314, in wrapper
+    return func(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/interpreters/partial_eval.py", line 1981, in trace_to_jaxpr_dynamic
+    jaxpr, out_avals, consts = trace_to_subjaxpr_dynamic(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/interpreters/partial_eval.py", line 1998, in trace_to_subjaxpr_dynamic
+    ans = fun.call_wrapped(*in_tracers_)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/linear_util.py", line 167, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/lax/control_flow/loops.py", line 1608, in scanned_fun
+    return (i + 1, body_fun()(i, x)), None
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/stateful.py", line 667, in pure_body_fun
+    val = body_fun(i, val)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 482, in recycle_body
+    ret = apply_network(prev=prev, safe_key=safe_key2)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 449, in apply_network
+    return impl(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 426, in wrapped
+    out = f(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/contextlib.py", line 75, in inner
+    return func(*args, **kwds)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 272, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 321, in __call__
+    repr_shape = hk.eval_shape(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/stateful.py", line 951, in eval_shape
+    out_shape = jax.eval_shape(stateless_fun, internal_state(), *args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/api.py", line 3201, in eval_shape
+    out = pe.abstract_eval_fun(wrapped_fun.call_wrapped,
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/interpreters/partial_eval.py", line 660, in abstract_eval_fun
+    _, avals_out, _ = trace_to_jaxpr_dynamic(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/profiler.py", line 314, in wrapper
+    return func(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/interpreters/partial_eval.py", line 1981, in trace_to_jaxpr_dynamic
+    jaxpr, out_avals, consts = trace_to_subjaxpr_dynamic(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/interpreters/partial_eval.py", line 1998, in trace_to_subjaxpr_dynamic
+    ans = fun.call_wrapped(*in_tracers_)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/linear_util.py", line 167, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/linear_util.py", line 167, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/stateful.py", line 947, in stateless_fun
+    out = fun(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 322, in <lambda>
+    lambda: embedding_module(batch, is_training))
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 426, in wrapped
+    out = f(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/contextlib.py", line 75, in inner
+    return func(*args, **kwds)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 272, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 661, in __call__
+    template_act = template_module(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 426, in wrapped
+    out = f(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/contextlib.py", line 75, in inner
+    return func(*args, **kwds)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 272, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 841, in __call__
+    summed_template_embeddings, _ = hk.scan(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/stateful.py", line 640, in scan
+    (carry, state), ys = jax.lax.scan(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/traceback_util.py", line 162, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/lax/control_flow/loops.py", line 259, in scan
+    init_flat, carry_avals, carry_avals_out, init_tree, *rest = _create_jaxpr(init)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/lax/control_flow/loops.py", line 245, in _create_jaxpr
+    jaxpr, consts, out_tree = _initial_style_jaxpr(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/lax/control_flow/common.py", line 60, in _initial_style_jaxpr
+    jaxpr, consts, out_tree = _initial_style_open_jaxpr(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/lax/control_flow/common.py", line 54, in _initial_style_open_jaxpr
+    jaxpr, _, consts = pe.trace_to_jaxpr_dynamic(wrapped_fun, in_avals, debug)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/_src/profiler.py", line 314, in wrapper
+    return func(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/interpreters/partial_eval.py", line 1981, in trace_to_jaxpr_dynamic
+    jaxpr, out_avals, consts = trace_to_subjaxpr_dynamic(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/interpreters/partial_eval.py", line 1998, in trace_to_subjaxpr_dynamic
+    ans = fun.call_wrapped(*in_tracers_)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/jax/linear_util.py", line 167, in call_wrapped
+    ans = self.f(*args, **dict(self.params, **kwargs))
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/stateful.py", line 623, in stateful_fun
+    carry, out = f(carry, x)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 837, in scan_fn
+    return carry + partial_template_embedder(*x), None
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 824, in partial_template_embedder
+    return template_embedder(query_embedding,
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 426, in wrapped
+    out = f(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/contextlib.py", line 75, in inner
+    return func(*args, **kwds)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 272, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 962, in __call__
+    act = construct_input(query_embedding, template_aatype,
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 922, in construct_input
+    rigid, backbone_mask = folding_multimer.make_backbone_affine(
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/folding_multimer.py", line 59, in make_backbone_affine
+    rigid = all_atom_multimer.make_transform_from_reference(
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/all_atom_multimer.py", line 966, in make_transform_from_reference
+    rotation = geometry.Rot3Array.from_two_vectors(c_xyz - b_xyz,
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/geometry/vector.py", line 59, in __sub__
+    return jax.tree_multimap(lambda x, y: x - y, self, other)
+jax._src.traceback_util.UnfilteredStackTrace: AttributeError: module 'jax' has no attribute 'tree_multimap'
+
+The stack trace below excludes JAX-internal frames.
+The preceding is the original exception that occurred, unmodified.
+
+--------------------
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/run_alphafold.py", line 452, in <module>
+    app.run(main)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/run_alphafold.py", line 428, in main
+    predict_structure(
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/run_alphafold.py", line 213, in predict_structure
+    prediction_result = model_runner.predict(processed_feature_dict,
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/model.py", line 167, in predict
+    result = self.apply(self.params, jax.random.PRNGKey(random_seed), feat)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/transform.py", line 128, in apply_fn
+    out, state = f.apply(params, {}, *args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/transform.py", line 357, in apply_fn
+    out = f(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/model.py", line 77, in _forward_fn
+    return model(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 426, in wrapped
+    out = f(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/contextlib.py", line 75, in inner
+    return func(*args, **kwds)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 272, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 485, in __call__
+    prev, safe_key = hk.fori_loop(0, num_iter, recycle_body, (prev, safe_key))
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/stateful.py", line 687, in fori_loop
+    state, val = jax.lax.fori_loop(lower, upper, pure_body_fun, init_val)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/stateful.py", line 667, in pure_body_fun
+    val = body_fun(i, val)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 482, in recycle_body
+    ret = apply_network(prev=prev, safe_key=safe_key2)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 449, in apply_network
+    return impl(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 426, in wrapped
+    out = f(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/contextlib.py", line 75, in inner
+    return func(*args, **kwds)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 272, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 321, in __call__
+    repr_shape = hk.eval_shape(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/stateful.py", line 951, in eval_shape
+    out_shape = jax.eval_shape(stateless_fun, internal_state(), *args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/stateful.py", line 947, in stateless_fun
+    out = fun(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 322, in <lambda>
+    lambda: embedding_module(batch, is_training))
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 426, in wrapped
+    out = f(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/contextlib.py", line 75, in inner
+    return func(*args, **kwds)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 272, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 661, in __call__
+    template_act = template_module(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 426, in wrapped
+    out = f(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/contextlib.py", line 75, in inner
+    return func(*args, **kwds)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 272, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 841, in __call__
+    summed_template_embeddings, _ = hk.scan(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/stateful.py", line 640, in scan
+    (carry, state), ys = jax.lax.scan(
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/stateful.py", line 623, in stateful_fun
+    carry, out = f(carry, x)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 837, in scan_fn
+    return carry + partial_template_embedder(*x), None
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 824, in partial_template_embedder
+    return template_embedder(query_embedding,
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 426, in wrapped
+    out = f(*args, **kwargs)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/contextlib.py", line 75, in inner
+    return func(*args, **kwds)
+  File "/home/users/dkavi/miniconda3/envs/alphafold/lib/python3.8/site-packages/haiku/_src/module.py", line 272, in run_interceptors
+    return bound_method(*args, **kwargs)
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 962, in __call__
+    act = construct_input(query_embedding, template_aatype,
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/modules_multimer.py", line 922, in construct_input
+    rigid, backbone_mask = folding_multimer.make_backbone_affine(
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/folding_multimer.py", line 59, in make_backbone_affine
+    rigid = all_atom_multimer.make_transform_from_reference(
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/all_atom_multimer.py", line 966, in make_transform_from_reference
+    rotation = geometry.Rot3Array.from_two_vectors(c_xyz - b_xyz,
+  File "/home/groups/katrinjs/run-hpc-alphafold/ParallelFold/alphafold/model/geometry/vector.py", line 59, in __sub__
+    return jax.tree_multimap(lambda x, y: x - y, self, other)
+AttributeError: module 'jax' has no attribute 'tree_multimap'

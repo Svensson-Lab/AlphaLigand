@@ -11,6 +11,9 @@ run_parafold_path=$3 #path to run_alphafold.sh script in the parallelfold instal
 dbpath=$4 #directory to alphafold database folder
 i=$5 #index of input fasta file 
 paths=$6 #concatenated string of path to each database file split by ";", see compute_msa_parallel.sh file for ordering
+installation_dir=$7
+
+echo $installation_dir
 
 filename=$(basename -- "$input")
 gene="${filename%.*}"
@@ -21,6 +24,7 @@ log=$output"/"$log
 echo "Started MSA Computation:"$(date +"%Y-%m-%d %T") > $log
 
 bash $run_parafold_path \
+	-a $installation_dir \
 	-d $dbpath \
 	-b $paths \
 	-o $output \

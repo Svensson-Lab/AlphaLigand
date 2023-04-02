@@ -35,6 +35,6 @@ echo "Started Prediction:"$(date +"%Y-%m-%d %T") > $log
 #	-c reduced_dbs \
 #	-use_gpu_relax=false
 
-bash $run_parafold_path -d $dbpath -b $paths -o $output -p false -m multimer -f $input -t 1800-01-01 -c reduced_dbs -e false -g false -q $installation_dir >> $log
+bash $run_parafold_path -d $dbpath -b $paths -o $output -p true -m multimer -f $input -t 1800-01-01 -c reduced_dbs -e false -g false -q $installation_dir >> $log
  
 echo "Finished Prediction:"$(date +"%Y-%m-%d %T") >> $log

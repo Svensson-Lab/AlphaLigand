@@ -3,8 +3,11 @@
 # Author: Sanjay Kumar Srikakulam
 # Modified by Bozitao Zhong
 
-while getopts ":d:b:o:p:i:t:u:c:m:R:bgrvsqfG" j; do
+while getopts ":a:d:b:o:p:i:t:u:c:m:R:bgrvsqfG" j; do
         case "${j}" in
+	a)
+		installation_dir=$OPTARG
+	;;
         d)
                 data_dir=$OPTARG 
         ;;
@@ -122,7 +125,8 @@ fi
 
 # This bash script looks for the run_alphafold.py script in its current working directory, if it does not exist then exits
 #current_working_dir=$(pwd)
-alphafold_script=$PWD"/ParallelFold/run_alphafold.py"
+#alphafold_script=$PWD"/ParallelFold/run_alphafold.py"
+alphafold_script="$installation_dir/run_alphafold.py"
 
 if [ ! -f "$alphafold_script" ]; then
     echo "Alphafold python script $alphafold_script does not exist."
@@ -191,5 +195,8 @@ echo $data_dir
 #add paths to PATH
 
 # Run AlphaFold with required parameters
-python $alphafold_script --use_precomputed_msas=true --fasta_paths=$fasta_path --data_dir=$data_dir --output_dir=$output_dir --jackhmmer_binary_path=$jackhmmer_binary_path --hhblits_binary_path=$hhblits_binary_path --hhsearch_binary_path=$hhsearch_binary_path --hmmsearch_binary_path=$hmmsearch_binary_path --hmmbuild_binary_path=$hmmbuild_binary_path --kalign_binary_path=$kalign_binary_path --uniref90_database_path=$uniref90_database_path --mgnify_database_path=$mgnify_database_path --bfd_database_path=$bfd_database_path --small_bfd_database_path=$small_bfd_database_path --uniclust30_database_path=$uniclust30_database_path --uniprot_database_path=$uniprot_database_path --pdb70_database_path=$pdb70_database_path --pdb_seqres_database_path=$pdb_seqres_database_path --template_mmcif_dir=$template_mmcif_dir --max_template_date=$max_template_date --obsolete_pdbs_path=$obsolete_pdbs_path --db_preset=$db_preset --model_preset=$model_preset --benchmark=$benchmark --run_relax=$amber_relaxation --use_gpu_relax=$use_gpu_relax --use_gpu_relax=false --logtostderr
+python $alphafold_script --use_gpu_relax=false --fasta_paths=$fasta_path --data_dir=$data_dir --output_dir=$output_dir --jackhmmer_binary_path=$jackhmmer_binary_path --hhblits_binary_path=$hhblits_binary_path --hhsearch_binary_path=$hhsearch_binary_path --hmmsearch_binary_path=$hmmsearch_binary_path --hmmbuild_binary_path=$hmmbuild_binary_path --kalign_binary_path=$kalign_binary_path --uniref90_database_path=$uniref90_database_path --mgnify_database_path=$mgnify_database_path --bfd_database_path=$bfd_database_path --small_bfd_database_path=$small_bfd_database_path --uniprot_database_path=$uniprot_database_path --pdb70_database_path=$pdb70_database_path --pdb_seqres_database_path=$pdb_seqres_database_path --template_mmcif_dir=$template_mmcif_dir --max_template_date=$max_template_date --obsolete_pdbs_path=$obsolete_pdbs_path --db_preset=$db_preset --model_preset=$model_preset --benchmark=$benchmark #--run_relax=$amber_relaxation --use_gpu_relax=$use_gpu_relax --use_gpu_relax=false --logtostderr
+
+#python $alphafold_script --use_precomputed_msas=true --fasta_paths=$fasta_path --data_dir=$data_dir --output_dir=$output_dir --jackhmmer_binary_path=$jackhmmer_binary_path --hhblits_binary_path=$hhblits_binary_path --hhsearch_binary_path=$hhsearch_binary_path --hmmsearch_binary_path=$hmmsearch_binary_path --hmmbuild_binary_path=$hmmbuild_binary_path --kalign_binary_path=$kalign_binary_path --uniref90_database_path=$uniref90_database_path --mgnify_database_path=$mgnify_database_path --bfd_database_path=$bfd_database_path --small_bfd_database_path=$small_bfd_database_path --uniprot_database_path=$uniprot_database_path  --uniclust30_database_path=$uniclust30_database_path --pdb70_database_path=$pdb70_database_path --pdb_seqres_database_path=$pdb_seqres_database_path --template_mmcif_dir=$template_mmcif_dir --max_template_date=$max_template_date --obsolete_pdbs_path=$obsolete_pdbs_path --db_preset=$db_preset --model_preset=$model_preset --benchmark=$benchmark --run_relax=$amber_relaxation --use_gpu_relax=$use_gpu_relax --use_gpu_relax=false --logtostderr
+
 #python $alphafold_script --use_precomputed_msas=true --fasta_paths=$fasta_path --data_dir=$data_dir --output_dir=$output_dir --model_names=$model_selection --jackhmmer_binary_path=$jackhmmer_binary_path --hhblits_binary_path=$hhblits_binary_path --hhsearch_binary_path=$hhsearch_binary_path --hmmsearch_binary_path=$hmmsearch_binary_path --hmmbuild_binary_path=$hmmbuild_binary_path --kalign_binary_path=$kalign_binary_path --uniref90_database_path=$uniref90_database_path --mgnify_database_path=$mgnify_database_path --bfd_database_path=$bfd_database_path --small_bfd_database_path=$small_bfd_database_path --uniclust30_database_path=$uniclust30_database_path --uniprot_database_path=$uniprot_database_path --pdb70_database_path=$pdb70_database_path --pdb_seqres_database_path=$pdb_seqres_database_path --template_mmcif_dir=$template_mmcif_dir --max_template_date=$max_template_date --obsolete_pdbs_path=$obsolete_pdbs_path --db_preset=$db_preset --model_preset=$model_preset --benchmark=$benchmark --run_relax=$amber_relaxation --use_gpu_relax=$use_gpu_relax --recycling=$recycling --run_feature=$run_feature --use_gpu_relax=false --logtostderr
