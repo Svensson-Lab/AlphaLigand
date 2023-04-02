@@ -5,12 +5,16 @@ Install miniconda:
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash Miniconda3-latest-Linux-x86_64.sh
 ``` 
+
 Clone this repository: 
+
 ```
 git clone git@github.com:Svensson-Lab/run-hpc-alphafold.git 
 cd run-hpc-alphafold
 ```
 Install requirements and create conda environment 
+
+```
 conda create --name alphafold python==3.8
 conda update -n base conda
 
