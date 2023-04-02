@@ -31,7 +31,9 @@ pip install --upgrade --no-cache-dir jax==0.3.17 jaxlib==0.3.14+cuda11.cudnn805 
 ```
 
 Activate environment:
-```conda activate alphafold```
+```
+conda activate alphafold
+```
 
 Set permissions for shell files: 
 ```
@@ -73,7 +75,8 @@ logdir=$out_dir #directory to write logs to, same as outdir by default
 1. `logdir` is directory to write logs to, same as outdir by default
 
 ### Running Alphafold
-#### Compute MSAs: After editing the inputs in `compute_msa_parallel.sh`, run it like so:
+#### Compute MSAs
+After editing the inputs in `compute_msa_parallel.sh`, run it like so:
 ```
 bash compute_msa_parallel.sh
 ```
