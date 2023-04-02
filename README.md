@@ -72,6 +72,7 @@ logdir=$out_dir #directory to write logs to, same as outdir by default
 1. `run_parafold_path` is the script to run alphafold, unless you have a specific modification there is no need to change this. Leaving `run_alphafold_test` and `run_parafold_no_template` is fine.
 1. `out_dir` is the directory to write MSAs and predictions to.
 1. `data_dir` is the directory to alphafold database folder, (make sure not to have a "/" at the end)
+1. `installation_dir` is the directory of the alphafold installation, such as the folder cloned from deepmind's alphafold repository or the ParallelFold folder. This is the folder that should contain the run_alphafold.py file and the alphafold utilities.  
 1. `logdir` is directory to write logs to, same as outdir by default
 
 ### Running Alphafold
