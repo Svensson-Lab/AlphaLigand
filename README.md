@@ -20,7 +20,6 @@ conda update -n base conda
 
 conda install -y -c conda-forge openmm==7.5.1 cudatoolkit==11.2.2 pdbfixer
 conda install -y -c bioconda hmmer hhsuite==3.3.0 kalign2
-conda install -y -c conda-forge openmm==7.5.1 cudatoolkit==11.2.2 pdbfixer
 ```
 
 - Change jax/jaxlib versions based on your alphafold version(below is for 2.2.4)
