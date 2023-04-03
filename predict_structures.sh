@@ -1,10 +1,10 @@
 #!/bin/bash
 ## Edit below with your requirements
-fasta_path="/home/groups/katrinjs/inputs" #path to receptor fasta files 
+fasta_path="/inputdir/inputs" #path to receptor fasta files 
 run_parafold_path="run_alphafold_test.sh" #path to run_alphafold.sh script, no need to change unless you have a specific use 
-out_dir="/home/groups/katrinjs/new_outs" #directory to write to
-installation_dir="/home/groups/katrinjs/alphafold/" #directory of alphafold installation, i.e. where run_alphafold.py is located
-data_dir="$OAK" #directory to alphafold database folder, (make sure not to have "/" at the end)  
+out_dir="/outputdir/new_outs" #directory to write to
+installation_dir="/alphafold_installationdir/alphafold/" #directory of alphafold installation, i.e. where run_alphafold.py is located
+data_dir="/datadir/" #directory to alphafold database folder, (make sure not to have "/" at the end)  
 logdir=$out_dir #directory to write logs to, same as outdir by default
 
 ##database paths, (the dates are set as the most recent version of the database, modify based on your installation if necessary)
