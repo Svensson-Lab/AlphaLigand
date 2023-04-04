@@ -99,3 +99,4 @@ will read MSAs from the output folder and save predictions for each sequence to 
 ### Tips and Possible Issues
 1. If the number of sequences you are processing is high, there is a possibly that your HPC environment will not allow you to submit the whole library. To solve this you can modify the `num_files` and `i` variables in the bash scripts to run fewer simultaneous predictions. For example `i=0` and `num_files=800` will process the first 800 sequences and i=800 and num_files=1600 will process the next 800.
 1. Make sure that the jax version is compatible with the version of Alphafold you are using, i.e. use "jax:0.3.25 + jaxlib:0.3.25" with Alphafold 2.3.x and "jax:0.3.17 + jaxlib:0.3.14" with Alphafold 2.2.4
+1. We also provide a modified version for the "run_alphafold.py" script, which stops predictions on a given sequence if the iptm values are extremely low to save time. 
