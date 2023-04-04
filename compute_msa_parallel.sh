@@ -30,7 +30,7 @@ pdb_seqres_database_path="$dummy_dir/dummy_fas.fas"
 paths="$bfd_database_path;$small_bfd_database_path;$mgnify_database_path;$template_mmcif_dir;$obsolete_pdbs_path;$pdb70_database_path;$pdb_seqres_database_path;$uniclust30_database_path;$uniref90_database_path;$uniprot_database_path"
 
 #format ligands and receptors into merged fasta files 
-#python process_input_folder.py $fasta_path
+python process_input_folder.py $fasta_path
 
 
 ##Compute MSAs for each ligand indiviually
@@ -61,7 +61,6 @@ then
     do
         #echo $ligands_path/${files[$i]}
         sbatch ./compute_msa.sh $ligands_path/${files[$i]} $out_dir/ligands_msas $run_parafold_path $data_dir/ $i $paths $installation_dir &
-        ##sbatch ./predict_from_precomputed.sh $fasta_path/${files[$i]} $out_dir /home/users/dkavi/ParallelFold/run_alphafold.sh $data_dir/ $i $paths &
     done
 fi
 
@@ -87,8 +86,7 @@ then
     #submit indiviual jobs per each receptor
     for (( i=0; i<${num_files}; i++ ));
     do
-        sbatch ./compute_msa.sh $receptors_path/${files[$i]} $out_dir/receptors_msas $run_parafold_path $data_dir/ $i $paths $installation_dir &
-        ##sbatch ./predict_from_precomputed.sh $fasta_path/${files[$i]} $out_dir /home/users/dkavi/ParallelFold/run_alphafold.sh $data_dir/ $i $paths &
+        sbatch ./compute_msa.sh $receptors_path/${files[$i]} $out_dir/receptors_msas $run_parafold_path $data_dir/ $i $paths $installation_dir & 
     done
 fi
 
