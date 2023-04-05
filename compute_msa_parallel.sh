@@ -1,12 +1,12 @@
 #!/bin/bash
 ## Edit below with your requirements
 
-fasta_path="/home/groups/katrinjs/inputs/" #path to receptor fasta files 
+fasta_path="/fastadir/inputs/" #path to receptor fasta files 
 run_parafold_path="run_parafold_no_template.sh" #path to run_parafold_no_template.sh script
-out_dir="/home/groups/katrinjs/new_outs" #directory to write msas to
-data_dir="$OAK" #directory to alphafold database folder, (make sure not to have "/" at the end)  
+out_dir="/outputdir/new_outs" #directory to write msas to
+data_dir="/datadir/" #directory to alphafold database folder, (make sure not to have "/" at the end)  
 logdir=$out_dir #directory to write logs to, same as outdir by default
-installation_dir="/home/groups/katrinjs/alphafold/"
+installation_dir="/alphafold_installation/"
 do_ligands=true
 do_receptors=false
 
@@ -55,6 +55,7 @@ mkdir $out_dir/receptors_msas
 
 if $do_ligands
 
+#Calculate msas for ligands in inputfolder
 then
     #submit indiviual jobs per each ligand
     for (( i=0; i<${num_files}; i++ ));
@@ -81,7 +82,7 @@ sed -i -e 's/\r$//' compute_msa.sh
 sed -i -e 's/\r$//' predict_from_precomputed.sh
 
 if $do_receptors
-
+#Calculates msas for all receptors in inputfolder
 then 
     #submit indiviual jobs per each receptor
     for (( i=0; i<${num_files}; i++ ));
