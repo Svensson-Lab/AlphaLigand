@@ -155,6 +155,7 @@ def predict_structure(
     run_feature: bool):
   """Predicts structure using AlphaFold for the given sequence."""
   
+  early_stopping = False
   logging.info('Predicting %s', fasta_name)
   timings = {}
   output_dir = os.path.join(output_dir_base, fasta_name)
