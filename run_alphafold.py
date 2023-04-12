@@ -118,7 +118,9 @@ flags.DEFINE_boolean('use_gpu_relax', None, 'Whether to relax on GPU. '
                      ' if this setting is enabled.')
                      
 #MODIFIED PART
-flags.DEFINE_string('alphafold_dir', None, 'Path to installation directory of alphafold (from github).')
+flags.DEFINE_string('alphafold_dir', "", 'Path to installation directory of alphafold (from github).')
+flags.DEFINE_boolean('early_stopping', False, 'Whether to stop predicting if a given sequence has extremely low iptm')
+flags.DEFINE_boolean('run_feature', False, 'Whether to stop processing sequence at MSAs. When set to True, this will stop at MSA computation and not produce predictions.')
 
 FLAGS = flags.FLAGS
 
@@ -140,17 +142,7 @@ def _check_flag(flag_name: str,
     raise ValueError(f'{flag_name} must {verb} set when running with '
                      f'"--{other_flag_name}={FLAGS[other_flag_name].value}".')
 
-"""
-def predict_structure(
-    fasta_path: str,
-    fasta_name: str,
-    output_dir_base: str,
-    data_pipeline: Union[pipeline.DataPipeline, pipeline_multimer.DataPipeline],
-    model_runners: Dict[str, model.RunModel],
-    amber_relaxer: relax.AmberRelaxation,
-    benchmark: bool,
-    random_seed: int):
-"""    
+
 def predict_structure(
     fasta_path: str,
     fasta_name: str,
@@ -159,7 +151,8 @@ def predict_structure(
     model_runners,
     amber_relaxer,
     benchmark: bool,
-    random_seed: int):
+    random_seed: int,
+    run_feature: bool):
   """Predicts structure using AlphaFold for the given sequence."""
   
   logging.info('Predicting %s', fasta_name)
@@ -183,6 +176,8 @@ def predict_structure(
   with open(features_output_path, 'wb') as f:
     pickle.dump(feature_dict, f, protocol=4)
 
+  if run_feature: return 0
+
   unrelaxed_pdbs = {}
   relaxed_pdbs = {}
   ranking_confidences = {}
@@ -191,9 +186,10 @@ def predict_structure(
   num_models = len(model_runners)
   
   # MODIFIED PART
-  min_iptm_first_model = 0.1
-  min_mean_iptm = 0.2 #if mean iptm of the first and second model is less than this value, the loop will be stopped early
-  iptms = []
+  if early_stopping:
+    min_iptm_first_model = 0.1
+    min_mean_iptm = 0.2 #if mean iptm of the first and second model is less than this value, the loop will be stopped early
+    iptms = []
   #
   
   for model_index, (model_name, model_runner) in enumerate(
@@ -352,7 +348,6 @@ def main(argv):
   from alphafold.relax import relax
   import numpy as np
 
-
   if run_multimer_system:
     template_searcher = hmmsearch.Hmmsearch(
         binary_path=FLAGS.hmmsearch_binary_path,
@@ -445,8 +440,8 @@ def main(argv):
         model_runners=model_runners,
         amber_relaxer=amber_relaxer,
         benchmark=FLAGS.benchmark,
-        random_seed=random_seed)
-
+        random_seed=random_seed,
+        run_feature=run_feature)
 
 if __name__ == '__main__':
   flags.mark_flags_as_required([
