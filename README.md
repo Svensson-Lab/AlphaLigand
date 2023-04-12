@@ -91,6 +91,8 @@ Make sure that the MSA computation in the above step is complete. Then, calling:
 ```
 python handle_msas.py out_dir input_dir
 ``` 
+If you are not using Parafold to compute MSAs, there are some required modifications to make in the run_alphafold.py file in your Alphafold installation. We have provided a run_alphafold.py script for you in the repository, so you may replace your existing file under alphafold/run_alphafold.py with our version if you wish. If you are using Parafold, there are no required changes.
+
 <<<<<<< HEAD
 will move the required MSAs for each sequence to the corresponding folder in the output directory. For multimer BMP10_ACE.fasta for example, alphafold needs the MSA for BMP10 and ACE sequences, instead of computing them again every time,we can copy the MSAs we have precomputed in the "Compute MSAs" step. 
 =======
