@@ -232,16 +232,18 @@ def predict_structure(
     if 'iptm' not in prediction_result:
       print("WARNING: This sequence does not calculate iptm values, this is likely because it is a monomer, which may cause premature stopping.")
 
-    iptms.append(prediction_result['iptm'])
+    if early_stopping:
+
+      iptms.append(prediction_result['iptm'])
   
-    #if first model iptm is less than 0.1, stop 
-    if len(iptms) == 1 and iptms[0] < min_iptm_first_model:
-      break
+      #if first model iptm is less than 0.1, stop 
+      if len(iptms) == 1 and iptms[0] < min_iptm_first_model:
+        break
    
-    #if the two models have been created, check if their mean iptm is less than the threshold
-    if (len(iptms) == 2 and sum(iptms)/2 < min_mean_iptm):
-      break
-    #
+      #if the two models have been created, check if their mean iptm is less than the threshold
+      if (len(iptms) == 2 and sum(iptms)/2 < min_mean_iptm):
+        break
+      #
 
     # Add the predicted LDDT in the b-factor column.
     # Note that higher predicted LDDT value means higher model confidence.
