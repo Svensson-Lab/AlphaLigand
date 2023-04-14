@@ -21,6 +21,11 @@ conda update -n base conda
 conda install -y -c conda-forge openmm==7.5.1 cudatoolkit==11.2.2 pdbfixer
 conda install -y -c bioconda hmmer hhsuite==3.3.0 kalign2
 ```
+Activate environment:
+```
+conda activate alphafold^M
+```
+
 
 - Change jax/jaxlib versions based on your alphafold version(below is for 2.2.4)
 ``` 
@@ -29,10 +34,7 @@ pip install absl-py==1.0.0 biopython==1.79 chex==0.0.7 dm-haiku==0.0.9 dm-tree==
 pip install --upgrade --no-cache-dir jax==0.3.17 jaxlib==0.3.14+cuda11.cudnn805 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 ```
 
-Activate environment:
-```
-conda activate alphafold
-```
+
 
 Set permissions for shell files: 
 ```
@@ -91,11 +93,7 @@ python handle_msas.py out_dir input_dir
 ``` 
 If you are not using Parafold to compute MSAs, there are some required modifications to make in the run_alphafold.py file in your Alphafold installation. We have provided a run_alphafold.py script for you in the repository, so you may replace your existing file under alphafold/run_alphafold.py with our version if you wish. If you are using Parafold, there are no required changes.
 
-<<<<<<< HEAD
-will move the required MSAs for each sequence to the corresponding folder in the output directory. For multimer BMP10_ACE.fasta for example, alphafold needs the MSA for BMP10 and ACE sequences, instead of computing them again every time,we can copy the MSAs we have precomputed in the "Compute MSAs" step. 
-=======
-Will move the required MSAs for each sequence to the corresponding folder in the output directory. For multimer BMP10_ACE.fasta for example, alphafold needs the MSA for BMP10 and ACE sequences, instead of computing them again every time, we copy the MSAs we have precomputed in the "Compute MSAs" step. 
->>>>>>> 6bd050f03e45a7cc6fb336f0f385172b0334aa53
+This script will move the required MSAs for each sequence to the corresponding folder in the output directory. For multimer BMP10_ACE.fasta for example, alphafold needs the MSA for BMP10 and ACE sequences, instead of computing them again every time,we can copy the MSAs we have precomputed in the "Compute MSAs" step. 
 
 #### Predict structures
 After changing the inputs in the `predict_structures.sh` script, calling:
