@@ -12,6 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+"""
+make msa plot square
+
+==
+modify run_alphafold.py to calculate median iptm, after 1 and 2 models
+
+first model: quit when median iptm < .1
+second model: quit when < .2
+
+Let run_alphafold.py be runnable outside the AlphaFold github clone, add a flag to point to installation dir
+==
+"""
+
 """Full AlphaFold protein structure prediction script."""
 import json
 import os
@@ -21,12 +34,23 @@ import random
 import shutil
 import sys
 import time
-from typing import Dict, Union
+from typing import Dict, Union, Optional
 
 from absl import app
 from absl import flags
 from absl import logging
-
+from alphafold.common import protein
+from alphafold.common import residue_constants
+from alphafold.data import pipeline
+from alphafold.data import pipeline_multimer
+from alphafold.data import templates
+from alphafold.data.tools import hhsearch
+from alphafold.data.tools import hmmsearch
+from alphafold.model import config
+from alphafold.model import data
+from alphafold.model import model
+from alphafold.relax import relax
+import numpy as np
 
 # Internal import (7716).
 
@@ -38,7 +62,7 @@ flags.DEFINE_list(
     'multiple sequences, then it will be folded as a multimer. Paths should be '
     'separated by commas. All FASTA paths must have a unique basename as the '
     'basename is used to name the output directories for each prediction.')
-
+flags.DEFINE_list('model_names', None, 'Names of models to use.')
 flags.DEFINE_string('data_dir', None, 'Path to directory of supporting data.')
 flags.DEFINE_string('output_dir', None, 'Path to a directory that will '
                     'store the results.')
@@ -117,27 +141,11 @@ flags.DEFINE_boolean('use_gpu_relax', None, 'Whether to relax on GPU. '
                      'Relax on GPU can be much faster than CPU, so it is '
                      'recommended to enable if possible. GPUs must be available'
                      ' if this setting is enabled.')
-                     
-#MODIFIED PART
-flags.DEFINE_string('alphafold_dir', None, 'Path to installation directory of alphafold (from github).')
+flags.DEFINE_integer('recycling', 3, 'Set number of recyclings')
+flags.DEFINE_boolean('run_feature', False, 'Calculate MSA and template to generate '
+                     'feature')
 
 FLAGS = flags.FLAGS
-
-#MODIFIED PART, add alphafold library to this file (running from out of the installation directory)
-#sys.path.append(FLAGS.alphafold_dir)
-
-from alphafold.common import protein
-from alphafold.common import residue_constants
-from alphafold.data import pipeline
-from alphafold.data import pipeline_multimer
-from alphafold.data import templates
-from alphafold.data.tools import hhsearch
-from alphafold.data.tools import hmmsearch
-from alphafold.model import config
-from alphafold.model import data
-from alphafold.model import model
-from alphafold.relax import relax
-import numpy as np
 
 MAX_TEMPLATE_HITS = 20
 RELAX_MAX_ITERATIONS = 0
@@ -164,7 +172,8 @@ def predict_structure(
     model_runners: Dict[str, model.RunModel],
     amber_relaxer: relax.AmberRelaxation,
     benchmark: bool,
-    random_seed: int):
+    random_seed: int,
+    run_feature: bool):
   """Predicts structure using AlphaFold for the given sequence."""
   logging.info('Predicting %s', fasta_name)
   timings = {}
@@ -177,15 +186,26 @@ def predict_structure(
 
   # Get features.
   t_0 = time.time()
-  feature_dict = data_pipeline.process(
-      input_fasta_path=fasta_path,
-      msa_output_dir=msa_output_dir)
-  timings['features'] = time.time() - t_0
+  features_output_path = os.path.join(output_dir, 'features.pkl')
+  
+  # If we already have feature.pkl file, skip the MSA and template finding step
+  if os.path.exists(features_output_path):
+    feature_dict = pickle.load(open(features_output_path, 'rb'))
+  
+  else:
+    feature_dict = data_pipeline.process(
+        input_fasta_path=fasta_path,
+        msa_output_dir=msa_output_dir)
 
   # Write out features as a pickled dictionary.
   features_output_path = os.path.join(output_dir, 'features.pkl')
   with open(features_output_path, 'wb') as f:
     pickle.dump(feature_dict, f, protocol=4)
+
+  timings['features'] = time.time() - t_0
+
+  if run_feature:
+    return 0
 
   unrelaxed_pdbs = {}
   relaxed_pdbs = {}
@@ -193,13 +213,6 @@ def predict_structure(
 
   # Run the models.
   num_models = len(model_runners)
-  
-  # MODIFIED PART
-  min_iptm_first_model = 0.1
-  min_mean_iptm = 0.2 #if mean iptm of the first and second model is less than this value, the loop will be stopped early
-  iptms = []
-  #
-  
   for model_index, (model_name, model_runner) in enumerate(
       model_runners.items()):
     logging.info('Running model %s on %s', model_name, fasta_name)
@@ -219,7 +232,7 @@ def predict_structure(
         model_name, fasta_name, t_diff)
 
     if benchmark:
-      t_0 = time.time()
+      t_0 = time.time() 
       model_runner.predict(processed_feature_dict,
                            random_seed=model_random_seed)
       t_diff = time.time() - t_0
@@ -235,21 +248,6 @@ def predict_structure(
     result_output_path = os.path.join(output_dir, f'result_{model_name}.pkl')
     with open(result_output_path, 'wb') as f:
       pickle.dump(prediction_result, f, protocol=4)
-      
-    #MODIFIED PART, stop if the mean of the first model's and second's iptm values are below the min_mean_iptm, stop predicting
-    if 'iptm' not in prediction_result:
-      print("WARNING: This sequence does not calculate iptm values, this is likely because it is a monomer, which may cause premature stopping.")
-
-    iptms.append(prediction_result['iptm'])
-  
-    #if first model iptm is less than 0.1, stop 
-    if len(iptms) == 1 and iptms[0] < min_iptm_first_model:
-      break
-   
-    #if the two models have been created, check if their mean iptm is less than the threshold
-    if (len(iptms) == 2 and sum(iptms)/2 < min_mean_iptm):
-      break
-    #
 
     # Add the predicted LDDT in the b-factor column.
     # Note that higher predicted LDDT value means higher model confidence.
@@ -390,13 +388,19 @@ def main(argv):
     data_pipeline = monomer_data_pipeline
 
   model_runners = {}
-  model_names = config.MODEL_PRESETS[FLAGS.model_preset]
+  if FLAGS.model_names:
+    model_names = FLAGS.model_names
+  else:
+    model_names = config.MODEL_PRESETS[FLAGS.model_preset]
   for model_name in model_names:
     model_config = config.model_config(model_name)
     if run_multimer_system:
       model_config.model.num_ensemble_eval = num_ensemble
+      model_config.model.num_recycle = FLAGS.recycling
     else:
       model_config.data.eval.num_ensemble = num_ensemble
+      model_config.model.num_recycle = FLAGS.recycling
+      model_config.data.common.num_recycle = FLAGS.recycling
     model_params = data.get_model_haiku_params(
         model_name=model_name, data_dir=FLAGS.data_dir)
     model_runner = model.RunModel(model_config, model_params)
@@ -433,7 +437,9 @@ def main(argv):
         model_runners=model_runners,
         amber_relaxer=amber_relaxer,
         benchmark=FLAGS.benchmark,
-        random_seed=random_seed)
+        random_seed=random_seed,
+        run_feature = FLAGS.run_feature)
+    logging.info('%s AlphaFold structure prediction COMPLETE', fasta_name)
 
 
 if __name__ == '__main__':
