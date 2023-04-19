@@ -44,7 +44,7 @@ chmod +x predict_from_precomputed.sh
 ```
 
 ## Usage
-Do not move the scripts from the run-hpc-alphafold folder, this will cause errors in accessing paths. Please also make sure that you have alphafold repository and the required databases installed. See [Deep Mind](https://github.com/deepmind/alphafold) for more information. This repo currently uses the Alphafold 2.2.4 release with reduced databases, however, changing inputs to your specifications also allow for using 2.3.x.     
+Do not move the scripts from the run-hpc-alphafold folder, this will cause errors in accessing paths. Please also make sure that you have alphafold repository and the required databases installed. See [Deep Mind](https://github.com/deepmind/alphafold) for more information. This repo currently uses the Alphafold 2.2.4 release with reduced databases.     
 
 ### Inputs
 The inputs should be in a directory with two folders: "Ligands" and "Receptors", each containing .fasta files for the required sequences. The script will create another directory "fasta_sequences" which holds the merged sequences, these are the sequences the user will be receiving predictions for. The user provides a folder "Ligands" which contains a list of ligand fasta files and "Receptors" which contains the fasta files for your receptors. Example: 

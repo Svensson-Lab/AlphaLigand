@@ -6,7 +6,7 @@ run_parafold_path="run_parafold_no_template.sh" #path to run_parafold_no_templat
 out_dir="/outputdir/new_outs" #directory to write msas to
 data_dir="/datadir/" #directory to alphafold database folder, (make sure not to have "/" at the end)
 logdir=$out_dir #directory to write logs to, same as outdir by default
-installation_dir="/alphafold_installation/"
+installation_dir="ParallelFold/"
 do_ligands=true
 do_receptors=false
 
