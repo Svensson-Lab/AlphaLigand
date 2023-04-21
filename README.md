@@ -1,4 +1,4 @@
-The collection of scripts in this repository predicts the structures of protein-multimers using lists of fasta files in a directory using [Slurm](https://slurm.schedmd.com/documentation.html). This is the release for AlphaFold version 2.2.4
+The collection of scripts in this repository predicts the structures of protein-multimers using lists of fasta files in a directory using [Slurm](https://slurm.schedmd.com/documentation.html). This is the release for AlphaFold version 2.3.1
 ## Installation
 Install miniconda: 
 ```
@@ -30,7 +30,7 @@ conda activate alphafold^M
 ``` 
 pip install absl-py==1.0.0 biopython==1.79 chex==0.0.7 dm-haiku==0.0.9 dm-tree==0.1.6 immutabledict==2.0.0 jax==0.3.25 ml-collections==0.1.0 numpy==1.21.6 pandas==1.3.4 protobuf==3.20.1 scipy==1.7.0 tensorflow-cpu==2.9.0
 
-pip install --upgrade --no-cache-dir jax==0.3.17 jaxlib==0.3.14+cuda11.cudnn805 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+pip install --upgrade --no-cache-dir jax==0.3.25 jaxlib==0.3.25+cuda11.cudnn805 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 ```
 
 
@@ -44,7 +44,7 @@ chmod +x predict_from_precomputed.sh
 ```
 
 ## Usage
-Do not move the scripts from the run-hpc-alphafold folder, this will cause errors in accessing paths. Please also make sure that you have alphafold repository and the required databases installed. See [Deep Mind](https://github.com/deepmind/alphafold) for more information. This repo currently uses the Alphafold 2.2.4 release with reduced databases.     
+Do not move the scripts from the run-hpc-alphafold folder, this will cause errors in accessing paths. Please also make sure that you have alphafold repository and the required databases installed. See [Deep Mind](https://github.com/deepmind/alphafold) for more information. This repo currently uses the Alphafold 2.3.1 release with reduced databases.     
 
 ### Inputs
 The inputs should be in a directory with two folders: "Ligands" and "Receptors", each containing .fasta files for the required sequences. The script will create another directory "fasta_sequences" which holds the merged sequences, these are the sequences the user will be receiving predictions for. The user provides a folder "Ligands" which contains a list of ligand fasta files and "Receptors" which contains the fasta files for your receptors. Example: 
