@@ -1,4 +1,4 @@
-The collection of scripts in this repository predicts the structures of protein-multimers using lists of fasta files in a directory using [Slurm](https://slurm.schedmd.com/documentation.html). This is the release for AlphaFold version 2.3.1
+The collection of scripts in this repository predicts the structures of protein-multimers using lists of fasta files in a directory using [Slurm](https://slurm.schedmd.com/documentation.html). This is the release for AlphaFold version 2.3.1. See here for [v2.2.4](https://github.com/Svensson-Lab/run-hpc-alphafold/releases/tag/v2.2.4)
 ## Installation
 Install miniconda: 
 ```
