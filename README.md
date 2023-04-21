@@ -22,7 +22,7 @@ conda install -y -c bioconda hmmer hhsuite==3.3.0 kalign2
 ```
 Activate environment:
 ```
-conda activate alphafold^M
+conda activate alphafold
 ```
 
 
