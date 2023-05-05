@@ -12,7 +12,12 @@ do_receptors=false
 
 bfd_database_path="$data_dir/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt"
 small_bfd_database_path="$data_dir/small_bfd/bfd-first_non_consensus_sequences.fasta"
+<<<<<<< HEAD
 mgnify_database_path="$data_dir/mgnify_2.3.3/mgy_clusters_2022_05.fa" #might need to change depending on mgnify is named in your data_dir
+=======
+#mgnify_database_path="$data_dir/mgnify/mgy_clusters_2018_12.fa" #2.2.4
+mgnify_database_path="$data_dir/mgnify_2.3.3/mgy_clusters_2022_05.fa"
+>>>>>>> 124a0db839e5a9dfe308c6ce1a7a2a27b59ba1d7
 pdb_seqres_database_path="$data_dir/dummy_database/dummy_fas.fas"
 uniref90_database_path="$data_dir/uniref90/uniref90.fasta"
 uniprot_database_path="$data_dir/uniprot/uniprot.fasta"
@@ -49,7 +54,7 @@ sed -i -e 's/\r$//' predict_from_precomputed.sh
 mkdir $out_dir/ligands_msas
 mkdir $out_dir/receptors_msas
 
-##if statement here that can be toggled
+##if statement here that can be toggled to include ligands/receptors in msa calculation if you already have MSAs precomputed
 
 if $do_ligands
 
