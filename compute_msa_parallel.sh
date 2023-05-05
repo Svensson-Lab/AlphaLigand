@@ -12,8 +12,7 @@ do_receptors=false
 
 bfd_database_path="$data_dir/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt"
 small_bfd_database_path="$data_dir/small_bfd/bfd-first_non_consensus_sequences.fasta"
-mgnify_database_path="$data_dir/mgnify/mgy_clusters_2018_12.fa" #
-#mgnify_database_path="$data_dir/mgnify_2.3.3/mgy_clusters_2022_05.fa"
+mgnify_database_path="$data_dir/mgnify_2.3.3/mgy_clusters_2022_05.fa" #might need to change depending on mgnify is named in your data_dir
 pdb_seqres_database_path="$data_dir/dummy_database/dummy_fas.fas"
 uniref90_database_path="$data_dir/uniref90/uniref90.fasta"
 uniprot_database_path="$data_dir/uniprot/uniprot.fasta"
@@ -31,7 +30,6 @@ paths="$bfd_database_path;$small_bfd_database_path;$mgnify_database_path;$templa
 
 #format ligands and receptors into merged fasta files
 python process_input_folder.py $fasta_path
-
 
 ##Compute MSAs for each ligand indiviually
 ligands_path=$fasta_path/Ligands
